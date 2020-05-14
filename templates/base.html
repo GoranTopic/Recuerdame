@@ -1,0 +1,28 @@
+<!-- template/base.html -->
+<!DOCTYPE html>
+
+<html lang="en">
+		<head>
+				<!-- Require meat tag -->
+				<meta charset="utf-8">
+				<meta name="viewport" content=="width=device-width, initial-scale=1, shrink-to-fit=no">
+				<!-- Bootstrap CSS -->
+				<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+		</head>
+		<body>
+				<nav>
+					<h1> Recuredame </h1>
+
+				</nav>
+
+				<div class="container">
+						<h4>{% block title %} Memorial {% endblock title %}</h4>
+				</div>
+				<div class="container">
+						{% block content %}
+						{% endblock content %}
+				</div>
+		</body>
+</html>
+
+

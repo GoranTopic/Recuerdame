@@ -1,0 +1,43 @@
+<!-- Memorial List View -->
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+	
+<h3>This is a list of all the memorials </h3>
+	
+{% endblock title %}
+
+
+{% block content %}
+
+	{% for memorial in object_list %}
+		<h4> {{ memorial.first_name }} {{ memorial.second_first_name }} </h4>
+		<h4> {{ memorial.last_name }} {{ memorial.second_last_name }} </h4>
+		<img src="{{ memorial.cover_image.url }}" alt="could not load image">
+		<img src="{{ memorial.profile_image.url }}" alt="could not load image">
+		<p>{{ memorial.profile_image.url }} </p>
+		<p> {{ memorial.biography }} </p>
+		<p>Born on: {{ memorial.date_of_birth }} </p>
+		<p>Passed on: {{ memorial.date_of_passing }} </p>
+		<br>
+		{% for eulogy in memorial.eulogy.all %}
+			<p> {{ eulogy.quote }} </p>
+			<p> {{ eulogy.anecdote }} </p>
+			<p> {{ eulogy.writting }} </p>
+			<p> by {{ eulogy.user }} </p>
+		{% endfor %}
+		<br>
+		<br>
+
+	{% endfor %}
+
+
+
+<p> This is working </p>
+{% endblock content %}
+
+
+
+
