@@ -1,0 +1,24 @@
+<!--  template/home.html -->
+{% extends 'base.html' %}
+
+
+{% block title %}
+	Que Soy?
+{% endblock title %}
+
+{% block content %}
+
+<div >
+		<h1 clas="display-4">Recuerdame</h1>
+		<p class="lead">
+		Recuardame es una pagina para crear conmemoriativos de las personas que an fallecido, por el Codvid-19, o pro cualquien otras cause. El proposito de este sitio es poder darles una forma de veloar a sus seres queridos sin tener que ariesgar su vida. La esperanza es que al crear un memorativo a es persona les permita tener closura aunque no las pudiron velar en la vida real. 
+		</p>
+		<p class="lead">
+		<a  href="{% url 'memorial_list' %}" role="button">Todos los Memorativos</a>                                 
+		</p>
+</div>
+
+
+
+{% endblock content %}
+~                           

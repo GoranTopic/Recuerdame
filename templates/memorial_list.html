@@ -1,4 +1,4 @@
-<!-- Memorial List View -->
+<!-- Memorial List -->
 
 {% extends 'base.html' %}
 
@@ -11,10 +11,12 @@
 {% block content %}
 	
 	<h2> Todos los Memorativos: </h2>
+	<p>------------------------------------------</p>
 	{% for memorial in object_list %}
-		<h4> {{ memorial.first_name }} {{ memorial.second_first_name }} </h4>
-		<h4> {{ memorial.last_name }} {{ memorial.second_last_name }} </h4>
-		<img src="{{ memorial.profile_image.url }}" height="42" width="42" alt="could not load image">
+	<a href="{% url 'detail' memorial.pk  %}">
+			<img src="{{ memorial.profile_image.url }}" height="42" width="42" alt="could not load image">
+			<h4> {{ memorial.get_full_name }}</h4>
+	</a>
 		<p>Born on: {{ memorial.date_of_birth }} </p>
 		<p>Passed on: {{ memorial.date_of_passing }} </p>
 		<p>------------------------------------------</p>

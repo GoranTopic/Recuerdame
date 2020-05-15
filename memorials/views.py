@@ -7,9 +7,9 @@ from .models import Memorial, Eulogy
 
 class MemorialListView(ListView):
     model = Memorial
-    template_name = 'memorialListView.html'
+    template_name = 'memorial_list.html'
 
 class MemorialDetailView(DetailView):
     model = Memorial
-    template_name = 'memorialDetailView.html'
+    template_name = 'memorial_detail.html'
 

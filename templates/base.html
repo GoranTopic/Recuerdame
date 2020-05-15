@@ -16,8 +16,10 @@
 					<h2> Hello there, {{ user.username }}! </h2>
 					<a href="{% url 'logout' %}" >logout</a>
 					{% else %}
-					<a href="{% url 'login' %}">login</a>
-					<a href="{% url 'signup' %}" >signup</a>
+					<p>
+						<a href="{% url 'login' %}">login</a> |
+						<a href="{% url 'signup' %}" >signup</a>
+					</p>
 					{% endif %}
 				</nav>
 

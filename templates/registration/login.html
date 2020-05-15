@@ -1,0 +1,26 @@
+<!-- Log in form for loggin in -->
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+	
+<h3>Login</h3>
+	
+{% endblock title %}
+
+
+{% block content %}
+<form method="post">
+		{% csrf_token %}
+		{% form %}
+		<button type="submit" class="">Sign me up!</button>
+</form>
+
+<p> No tienes una cuenta, puedes crear una <a href="{% url 'signup' %}"> aqui</a></p>
+
+{% endblock content %}
+
+
+
+
