@@ -1,0 +1,25 @@
+<!-- sign up html is used by sign up view which uses creatUserForm -->
+
+{% extends 'base.html' %}
+
+
+{% block title %}
+	
+<h3>Sign up user</h3>
+	
+{% endblock title %}
+
+
+{% block content %}
+<form method="post">
+		{% csrf_token %}
+		{% form %}
+		<button type="submit" class="">Sign me up!</button>
+</form>
+	
+
+{% endblock content %}
+
+
+
+

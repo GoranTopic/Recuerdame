@@ -25,7 +25,8 @@ urlpatterns = [
     path('users/', include('users.urls')),
     #path to handle thing like logout which are not acounted for in users.urls
     path('users/', include('django.contrib.auth.urls')),
-    path('', include('memorials.urls')),
+    path('memorials/', include('memorials.urls')),
+    path('', include('pages.urls')),
 ]
 
 
