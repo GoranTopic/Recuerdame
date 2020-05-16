@@ -39,11 +39,10 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # Local apps
     'memorials',
+    'eulogies',
     'users.apps.UsersConfig',
-
-
-
     #thrid party
+    'crispy_forms',
 
 ]
 

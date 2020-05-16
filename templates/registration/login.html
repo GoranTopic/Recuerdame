@@ -11,10 +11,10 @@
 
 
 {% block content %}
-<form method="post">
+<form method="post" id="form_login">
 		{% csrf_token %}
-		{% form %}
-		<button type="submit" class="">Sign me up!</button>
+		{{ form.as_p }}
+		<button type="submit" class="">Login</button>
 </form>
 
 <p> No tienes una cuenta, puedes crear una <a href="{% url 'signup' %}"> aqui</a></p>

@@ -21,6 +21,9 @@
 			<p>-{{eulogy.user}}</p>
 	{% endfor %}
 
+	<p> 
+	<a href ="{% url 'memorial_update' memorial.pk %}"> edit</a> |
+	<a href ="{% url 'memorial_delete' memorial.pk %}">delete</a> 
 {% endblock content %}
 
 

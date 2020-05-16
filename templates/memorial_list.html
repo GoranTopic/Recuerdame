@@ -13,7 +13,7 @@
 	<h2> Todos los Memorativos: </h2>
 	<p>------------------------------------------</p>
 	{% for memorial in object_list %}
-	<a href="{% url 'detail' memorial.pk  %}">
+	<a href="{% url 'memorial_detail' memorial.pk  %}">
 			<img src="{{ memorial.profile_image.url }}" height="42" width="42" alt="could not load image">
 			<h4> {{ memorial.get_full_name }}</h4>
 	</a>

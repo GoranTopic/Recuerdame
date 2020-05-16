@@ -6,16 +6,16 @@
 
 {% block title %}
 	
-<h3>Sign up user</h3>
+<h3>Crear Tu Memoriativo</h3>
 	
 {% endblock title %}
 
 
 {% block content %}
-<form method="post">
+<form method="post" enctype="multipart/form-data"  > 
 		{% csrf_token %}
 		{{ form|crispy }}
-		<button type="submit" class="">Sign me up!</button>
+		<button type="submit" class="">Crear</button>
 </form>
 	
 

@@ -11,7 +11,7 @@
 		</head>
 		<body>
 				<nav>
-					<h1> Recuredame </h1>
+						<a href="{% url 'home' %}"><h1> Recuredame </h1></a>
 					{% if user.is_authenticated %}
 					<h2> Hello there, {{ user.username }}! </h2>
 					<a href="{% url 'logout' %}" >logout</a>
@@ -20,7 +20,14 @@
 						<a href="{% url 'login' %}">login</a> |
 						<a href="{% url 'signup' %}" >signup</a>
 					</p>
+					
 					{% endif %}
+					<div>
+							<p>
+								<a href="{% url 'quesoy' %}">Que Soy?</a> |
+								<a href="{% url 'contactame' %}" >Contactame</a>
+							</p>
+					</div>
 				</nav>
 
 				<div class="container">
