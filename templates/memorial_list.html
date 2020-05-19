@@ -14,7 +14,7 @@
 	<p>------------------------------------------</p>
 	{% for memorial in object_list %}
 	<a href="{% url 'memorial_detail' memorial.pk  %}">
-			<img src="{{ memorial.profile_image.url }}" height="42" width="42" alt="could not load image">
+			<img src="{{ memorial.profile_image.url|default:"nil" }}" height="42" width="42" alt="could not load image">
 			<h4> {{ memorial.get_full_name }}</h4>
 	</a>
 		<p>Born on: {{ memorial.date_of_birth }} </p>

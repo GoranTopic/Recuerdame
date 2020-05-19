@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'lmdo54y!%n^+risjh!sevcpw2ka=i148mhp2y_&7+#m#1$i&$5'
+SECRET_KEY = 'r4jdqjfjrj(im=8be5z0ef)$j)95hd-f#u-a3-&75m%e@(=9q!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,23 +37,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Local apps
-    'memorials',
-    'eulogies',
-    'users.apps.UsersConfig',
-    #thrid party
+    # thrid party 
     'crispy_forms',
-
+    # local 
+    'eulogies',
+    'users',
+    'memorials',
+    'pages',
 ]
-
-# set custom user as our defaul user
-AUTH_USER_MODEL = 'users.CustomUser'
-
-
-# login/ logout redirect
-LOGIN_REDIRECT_URL = 'home'
-LOGOUT_REDIRECT_URL = 'home'
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -66,13 +57,6 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'recuerdame_project.urls'
-
-
-# define a place where to store the media
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
 
 TEMPLATES = [
     {
@@ -141,3 +125,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+# Custom settings
+
+# set custom user as our deaful user 
+AUTH_USER_MODEL = 'users.CustomUser'
+
+#login/ logout redirect 
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_REDIRECT_URL = 'home'
+
+# define where to store the media files
+MEDIA_URL ='/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+
+
+

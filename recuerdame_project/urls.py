@@ -23,14 +23,14 @@ urlpatterns = [
 
 
     path('users/', include('users.urls')),
-    #path to handle thing like logout which are not acounted for in users.urls
+    # path to handle thing like logout which are not acounted for in users.urls
     path('users/', include('django.contrib.auth.urls')),
     path('memorials/', include('memorials.urls')),
     path('', include('pages.urls')),
 ]
 
 
-
+ # set path for media when DEBUGGING is on
 if settings.DEBUG:
     urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

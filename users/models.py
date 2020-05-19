@@ -4,8 +4,6 @@ from django_countries.fields import CountryField
 # Create your models here.
 
 class CustomUser(AbstractUser):
-    country = CountryField(multiple=True, blank=True)
-
-
+    country = CountryField(multiple=True, blank=True)   
 
 

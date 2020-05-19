@@ -12,10 +12,13 @@
 
 
 {% block content %}
-		<img src="{{ memorial.profile_image.url }}" height="42" width="42" alt="could not load image">
+		<img src="{{ memorial.cover_image.url }}" height="200" width="500" alt="could not load image">
+		<img src="{{ memorial.profile_image.url }}" height="100" width="100" alt="could not load image">
 		<p>Born on: {{ memorial.date_of_birth }} </p>
 		<p>Passed on: {{ memorial.date_of_passing }} </p>
 		<p>Bio: {{ memorial.biography }} </p>
+		<p>Created by: {{ memorial.created_by }} </p>
+		<p>manager: {{ memorial.manager }} </p>
 		{% for eulogy in memorial.eulogy.all %}
 		<p><i>"{{eulogy.quote}}"</i></p>
 			<p>-{{eulogy.user}}</p>
