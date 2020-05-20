@@ -1,26 +1,112 @@
 <!-- sign up html is used by sign up view which uses creatUserForm -->
-
 {% extends 'base.html' %}
+{% load static %}
 
 {% load crispy_forms_tags %}
 
 {% block title %}
-	
-<h3>Sign up user</h3>
-	
+<h3>registrar usuario</h3>
 {% endblock title %}
 
 
-{% block content %}
-<form method="post">
-		{% csrf_token %}
-		{{ form|crispy }}
-		<button type="submit" class="">Sign me up!</button>
-</form>
-	
 
-{% endblock content %}
+<!-- Navigation-->
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-bottom" id="bottomMainNav">
+		<div class="container">
+				<a class="navbar-brand js-scroll-triggear" href="{% url 'home' %}">Recuerdame</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#about">Que soy?</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#covid-19">Covid-19</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#busqueda">Busqueda</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#contactanos">Contactanos</a>
+								</li>
+								{% if user.is_authenticated %}
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="#">
+												<i class="far fa-user-circle fa-1x text-white"></i>
+												{{ user.username }}
+										</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"> 
+												<i class="fas fa-sign-out-alt fa-1x text-white" aria-hidden="true"></i>
+												Salir de cuenta
+										</a>
+								</li>
+								{% else %}
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'login' %}">
+												<i class="fas fa-sign-in-alt"></i>
+												Ingresa
+										</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">
+												<i class="fas fa-user-plus"></i>
+												Registrate
+										</a>
+								</li>
+								{% endif %}
+						</ul>
+				</div>
+		</div>
+</nav>
+{% endblock navbar %}
 
 
+
+
+<!-- Background picture style -->
+{% block bg_css %}
+<style>
+.masthead {
+		position: relative;
+		width: 100%;
+		height: auto;
+		min-height: 60rem;
+		padding: 8rem 0;
+		background: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.2) 0%,
+				rgba(0, 0, 0, 0.6) 85%, 
+				rgba(0, 0, 0, 8.5) 100%),
+				url("{% static 'img/sunset-675847_1920.jpg' %}");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-size: cover;
+	}
+</style>
+{% endblock bg_css %}
+
+
+
+
+<!-- Masthead-->
+{% block masthead %}
+<header class="masthead">
+		<div class="mx-auto text-center">
+				   <h1 class="text-white mx-auto mt-3 mb-5">Registrate</h1>
+						<form method="post" class="container
+						text-white-50
+						font-weight-bold
+						h4
+						">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<button type="submit" class="btn btn-primary js-scroll-trigger">Registrame</button>
+				</form>
+		</div>
+</header>
+{% endblock masthead %}
 
 

@@ -1,25 +1,39 @@
 <!-- Log in form for loggin in -->
 
 {% extends 'base.html' %}
+{% load static %}   
+
+{% block title %}Login{% endblock title %}
 
 
-{% block title %}
-	
-<h3>Login</h3>
-	
-{% endblock title %}
 
+<!-- Masthead-->
+{% block masthead %}
+<header class="masthead">
+		<div class="container d-flex h-100 align-items-center">
+				<div class="mx-auto text-center">
 
-{% block content %}
-<form method="post" id="form_login">
-		{% csrf_token %}
-		{{ form.as_p }}
-		<button type="submit" class="">Login</button>
-</form>
+						<h1 class="mx-auto my-0 text-uppercase">RECUEDARME</h1>
+						<h2 class="text-white-50 mx-auto mt-2 mb-5">Un refugio para la eternidad</h2>
+						<form method="post" id="form_login", class="container
+								text-white-50
+								font-weight-bold
+								text-xl-center
+								text-capitalize
+								h4
+								">
+								{% csrf_token %}
+								{{ form.as_p }}
+								<button type="submit" class="btn btn-primary js-scroll-trigger">Login</button>
+								<p> No tienes una cuenta, puedes crear una 
+								<a href="{% url 'signup' %}"> aqui</a>
+								</p>
+						</form>
+				</div>
+		</div>
+</header>
 
-<p> No tienes una cuenta, puedes crear una <a href="{% url 'signup' %}"> aqui</a></p>
-
-{% endblock content %}
+{% endblock masthead %}
 
 
 
