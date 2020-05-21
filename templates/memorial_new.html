@@ -1,26 +1,53 @@
 <!-- sign up html is used by sign up view which uses creatUserForm -->
-
 {% extends 'base.html' %}
-
+{% load static %}
 {% load crispy_forms_tags %}
 
 {% block title %}
-	
 <h3>Crear Tu Memoriativo</h3>
-	
 {% endblock title %}
 
+<!-- Background picture style -->
+{% block bg_css %}
+<style>
+.masthead {
+		position: relative;
+		width: 100%;
+		height: auto;
+		min-height: 60rem;
+		padding: 8rem 0;
+		background: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.2) 0%,
+				rgba(0, 0, 0, 0.6) 85%, 
+				rgba(0, 0, 0, 8.5) 100%),
+				url("{% static 'img/sunset-675847_1920.jpg' %}");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-size: cover;
+	}
+</style>
+{% endblock bg_css %}
 
-{% block content %}
-<form action="" method="post" enctype="multipart/form-data"  > 
-		{% csrf_token %}
-		{{ form|crispy }}
-		<button type="submit" class="">Crear</button>
-</form>
-	
 
-{% endblock content %}
-
+<!-- Masthead-->
+{% block masthead %}
+<header class="masthead">
+		<div class="mx-auto text-center">
+				   <h1 class="text-white mx-auto mt-3 mb-5">Registrate</h1>
+						<form method="post" enctype="multipart/form-data" class="container
+						text-white-50
+						font-weight-bold
+						h4
+						">
+						{% csrf_token %}
+						{{ form|crispy }}
+						<button type="submit" class="btn btn-primary js-scroll-trigger">Crear</button>
+				</form>
+		</div>
+</header>
+{% endblock masthead %}
 
 
 

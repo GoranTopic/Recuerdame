@@ -9,9 +9,9 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 # requiered field attibutes
-FIELDS = ( 'first_name', 'second_first_name', 'last_name', 'second_last_name',
-           'biography' , 'date_of_birth', 'date_of_passing', 'profile_image' ,
-           'cover_image')
+FIELDS = ( 'nombre', 'segundo_nombre', 'apellido', 'segundo_apellido',
+           'biografia' , 'fecha_de_nacimiento', 'fecha_de_muerte', 
+           'imagen_de_perfil', 'image_de_fondo')
 
 
 class MemorialListView(ListView):
@@ -51,14 +51,14 @@ class MemorialCreateView(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         ''' Set the user wich send the request as the form 'creator' '''
         print("Form valid RAN!!!")
-        form.instance.created_by = self.request.user
+        form.instance.creado_por = self.request.user
         form.instance.manager = self.request.user
         return super().form_valid(form)
 
     def form_invalid(self, form):
         ''' Set the user wich send the request as the form 'creator' '''
         print("Form invalied RAN!!!")
-        form.instance.created_by = self.request.user
+        form.instance.creado_por = self.request.user
         form.instance.manager = self.request.user
         return super().form_valid(form)
 

@@ -10093,7 +10093,7 @@ body {
 
 
 #bottomMainNav {
-  min-height: 3.5rem;
+  min-height: 1.5rem;
   background-color: #fff;
 }
 
@@ -10109,7 +10109,7 @@ body {
 #bottomMainNav .navbar-brand {
   color: #000000;
   font-weight: 700;
-  padding: 0.9rem 0;
+  padding: 0.3rem 0;
 }
 #bottomMainNav .navbar-nav .nav-item:hover {
   color: fade(#fff, 80%);
@@ -10147,7 +10147,7 @@ body {
     background-color: #fff;
   }
   #bottomMainNav.navbar-shrink .navbar-brand {
-    color: #000000;
+    color: #32e3;
   }
   #bottomMainNav.navbar-shrink .nav-link {
     color: #000000;
@@ -10166,7 +10166,6 @@ body {
     border-bottom: 0.25rem solid #64a19d;
   }
 }
-
 
 
 #mainNav {

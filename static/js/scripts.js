@@ -43,7 +43,7 @@
 
     // Collapse Navbar
     var navbarCollapse = function () {
-        if ($("#mainNav").offset().top > 400) {
+        if ($("#mainNav").offset().top > 100) {
             $("#mainNav").addClass("navbar-shrink");
         } else {
             $("#mainNav").removeClass("navbar-shrink");
@@ -52,10 +52,10 @@
 	
 		// Collapse Navbar
     var bottomNavbarCollapse = function () {
-        if ($("#bottomNav").offset().top > 100) {
-            $("#bottomNav").addClass("navbar-shrink");
+        if ($("#bottomMainNav").offset().top > 100) {
+            $("#bottomMainNav").addClass("navbar-shrink");
         } else {
-            $("#bottomNav").removeClass("navbar-shrink");
+            $("#bottomMainNav").removeClass("navbar-shrink");
         }
     };
 

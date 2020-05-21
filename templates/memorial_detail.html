@@ -1,6 +1,6 @@
 <!-- Memorial Detail View -->
-
 {% extends 'base.html' %}
+{% load static %}
 
 
 {% block title %}
@@ -11,14 +11,95 @@
 {% endblock title %}
 
 
-{% block content %}
-		<img src="{{ memorial.cover_image.url }}" height="200" width="500" alt="could not load image">
-		<img src="{{ memorial.profile_image.url }}" height="100" width="100" alt="could not load image">
-		<p>Born on: {{ memorial.date_of_birth }} </p>
-		<p>Passed on: {{ memorial.date_of_passing }} </p>
-		<p>Bio: {{ memorial.biography }} </p>
-		<p>Created by: {{ memorial.created_by }} </p>
-		<p>manager: {{ memorial.manager }} </p>
+<!-- Navigation-->
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light fixed-bottom" id="bottomMainNav">
+		<div class="container">
+				<a class="navbar-brand js-scroll-triggear" href="{% url 'home' %}">Recuerdame</a><button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu<i class="fas fa-bars"></i></button>
+				<div class="collapse navbar-collapse" id="navbarResponsive">
+						<ul class="navbar-nav ml-auto">
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#about">Que soy?</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#covid-19">Covid-19</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#busqueda">Busqueda</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'home' %}#contactanos">Contactanos</a>
+								</li>
+								{% if user.is_authenticated %}
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="#">
+												<i class="far fa-user-circle fa-1x text-white"></i>
+												{{ user.username }}
+										</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'logout' %}"> 
+												<i class="fas fa-sign-out-alt fa-1x text-white" aria-hidden="true"></i>
+												Salir de cuenta
+										</a>
+								</li>
+								{% else %}
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'login' %}">
+												<i class="fas fa-sign-in-alt"></i>
+												Ingresa
+										</a>
+								</li>
+								<li class="nav-item">
+										<a class="nav-link js-scroll-trigger" href="{% url 'signup' %}">
+												<i class="fas fa-user-plus"></i>
+												Registrate
+										</a>
+								</li>
+								{% endif %}
+						</ul>
+				</div>
+		</div>
+</nav>
+{% endblock navbar %}
+
+
+
+<!-- Background picture style -->
+{% block bg_css %}
+<style>
+.masthead {
+		position: relative;
+		width: 100%;
+		height: auto;
+		min-height: 60rem;
+		padding: 8rem 0;
+		background: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.2) 0%,
+				rgba(0, 0, 0, 0.6) 85%, 
+				rgba(0, 0, 0, 8.5) 100%),
+		url("{% static '{{ memorial.imagen_de_fondo.url %}");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-size: cover;
+	}
+</style>
+{% endblock bg_css %}
+
+
+<!-- Masthead-->
+{% block masthead %}
+<header class="masthead">
+
+
+		<img src="{{ memorial.imagen_de_perfil.url }}" height="100" width="100" alt="could not load image">
+		<p>Fecha de Nacimiento: {{ memorial.fecha_de_nacimiento }} </p>
+		<p>Muerte: {{ memorial.fecha_de_muerte }} </p>
+		<p>Biografia: {{ memorial.biografia }} </p>
+		<p>Creado por: {{ memorial.creado_por }} </p>
+		<p>manejado: {{ memorial.manager }} </p>
 		{% for eulogy in memorial.eulogy.all %}
 		<p><i>"{{eulogy.quote}}"</i></p>
 			<p>-{{eulogy.user}}</p>
@@ -27,7 +108,9 @@
 	<p> 
 	<a href ="{% url 'memorial_update' memorial.pk %}"> edit</a> |
 	<a href ="{% url 'memorial_delete' memorial.pk %}">delete</a> 
-{% endblock content %}
+
+</header>
+{% endblock masthead %}
 
 
 
