@@ -1,0 +1,87 @@
+<!-- Memorial Detail View -->
+{% extends 'memorial_base.html' %}
+{% load static %}
+
+{% block title %}
+<h3>
+	Memorativo para 
+</h3>
+<h2>	{{ memorial.get_full_name }}</h2>
+{% endblock title %}
+
+
+
+
+
+<!-- Navigation-->
+{% block navbar %}
+<nav class="nav-bar navbar-expand-md navbar-light bg-light sticky-top" >
+		<div class=" container-fluid">
+				<a class="bav-brnad" ><p>NavBrand</p></a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" date-target="#navbarResponsive">
+				</button>
+		</div>
+</nav>
+{% endblock navbar %}
+
+<!--
+
+<!-- Background picture style -->
+{% block bg_css %}
+<style>
+.background {
+		position: relative;
+		width: 100%;
+		height: auto;
+		min-height: 60rem;
+		padding: 1rem 0;
+		background: linear-gradient(
+				to bottom,
+				rgba(0, 0, 0, 0.1) 0%,
+				rgba(0, 0, 0, 0.3) 85%, 
+				rgba(0, 0, 0, 0.8) 100%),
+		url("{{ memorial.imagen_de_fondo.url }}");
+		background-position: center;
+		background-repeat: no-repeat;
+		background-attachment: scroll;
+		background-size: cover;
+	}
+</style>
+{% endblock bg_css %}
+
+
+<!-- content-->
+{% block content %}
+
+
+
+
+<header class="background ">
+		<div class="container text-white d-flex flex-column align-items-center">
+				<img src="{{ memorial.imagen_de_perfil.url }}" class="img-responsive" 
+						 alt="could not load image">
+				
+				<h2 class="text-white m-5">	
+						{{ memorial.get_full_name }}
+				</h2>
+				<p tex >Fecha de Nacimiento: {{ memorial.fecha_de_nacimiento }} </p>
+				<p>Muerte: {{ memorial.fecha_de_muerte }} </p>
+				<p>Biografia: {{ memorial.biografia }} </p>
+				<p>Creado por: {{ memorial.creado_por }} </p>
+				<p>manejado: {{ memorial.manager }} </p>
+				{% for eulogy in memorial.eulogy.all %}
+			</div>
+
+			<div >
+				<p><i>"{{eulogy.quote}}"</i></p>
+				<p>-{{eulogy.user}}</p>
+				{% endfor %}
+				<p> 
+				<a href ="{% url 'memorial_update' memorial.pk %}"> edit</a> |
+				<a href ="{% url 'memorial_delete' memorial.pk %}">delete</a> 
+		</div>
+</header>
+{% endblock content %}
+
+
+

@@ -1,4 +1,5 @@
 <!-- Memorial Detail View -->
+{% load static %}
 <!-- template/memorial_base.html -->
 <!doctype html>
 <html lang="en">
@@ -12,19 +13,21 @@
 															 integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
 															 crossorigin="anonymous">
 				<!-- Load favicon -->
+				<link rel="icon" type="image/x-icon" href="{% static 'img/favicon.ico' %}" />
 				<!-- Font Awesome icons (free version)-->
 				<script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
 				<title>
-						Memorial 
+						{% block title %} Memorial {% endblock title %}
 				</title>
 		</head>
 		<body>
 
+				{% block navbar %}
 				<!-- Navigation-->
-				<nav class="navbar navbar-expand-md shadow-lg navbar-dark bg-dark sticky-top" id="mainNav">
+				<nav class="navbar navbar-expand-md shadow-lg  rounded navbar-dark bg-dark sticky-top" id="mainNav">
 						<div class="container-fluid">
 								<a class="navbar-brand " 
-									 href="#">Recuerdame</a>
+									 href="{% url 'home' %}">Recuerdame</a>
 								<button class="navbar-toggler navbar-toggler-right"
 												type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" 
 																																														 aria-expanded="false" 
@@ -34,25 +37,26 @@
 								<div class="collapse navbar-collapse" id="navbarResponsive">
 										<ul class="navbar-nav ml-auto">
 												<li class="nav-item">
-														<a class="nav-link" href="#">Que soy?</a>
+														<a class="nav-link" href="{% url 'home' %}#about">Que soy?</a>
 												</li>
 												<li class="nav-item">
-														<a class="nav-link" href="#">Covid-19</a>
+														<a class="nav-link" href="{% url 'home' %}#projects">Covid-19</a>
 												</li>
 												<li class="nav-item">
-														<a class="nav-link" href="#">Busqueda</a>
+														<a class="nav-link" href="#{% url 'home' %}signup">Busqueda</a>
 												</li>
 												<li class="nav-item">
-														<a class="nav-link" href="#">Contactanos</a>
+														<a class="nav-link" href="#{% url 'home' %}signup">Contactanos</a>
 												</li>  
 												<div class="dropdown-divider"></div>
+												{% if user.is_authenticated %}
 												<li class="nav-item" >
 														<a class="nav-link  dropdown-toggle" id="navbardrop" data-toggle="dropdown">
 																<i class="far fa-user-circle fa-1x"></i>
-																Mara
+																{{ user.username }}
 														</a>
 														<div class="dropdown-menu bg-dark">
-																<a class="dropdown-item bg-dark text-light" href="#"> 
+																<a class="dropdown-item bg-dark text-light" href="{% url 'logout' %}"> 
 																		<i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i>
 																		Salir de cuenta
 																</a>
@@ -60,23 +64,27 @@
 												</li>
 												<li class="nav-item">
 												</li>
+												{% else %}
 												<li class="nav-item">
-														<a class="nav-link " href="#">
+														<a class="nav-link " href="{% url 'login' %}">
 																<i class="fas fa-sign-in-alt"></i>
 																Ingresa
 														</a>
 												</li>
 												<li class="nav-item">
-														<a class="nav-link" href="#">
+														<a class="nav-link" href="{% url 'signup' %}">
 																<i class="fas fa-user-plus"></i>
 																Registrate
 														</a>
 												</li>
+												{% endif %}
 										</ul>
 								</div>
 						</div>
 				</nav>
+				{% endblock navbar %}
 				<!-- Background picture style -->
+				{% block bg_css %}
 				<style>
 .coverContainer {
 		position: relative;
@@ -87,86 +95,48 @@
 				rgba(0, 0, 0, 0.2) 0%,
 				rgba(0, 0, 0, 0.6) 85%, 
 				rgba(0, 0, 0, 8.5) 100%),
-			url("https://w.wallhaven.cc/full/13/wallhaven-13mk9v.jpg");
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-attachment: scroll;
-		background-size: cover;
+		url("{% static 'img/sunset-174276_1920.jpg' %}");
+background-position: center center;
+background-repeat: no-repeat;
+background-attachment: scroll;
+background-size: cover;
 }
 
-.coverImg {
+.profileImage {
 		position: relative;
-		background: linear-gradient(
-				to bottom,
-				rgba(0, 0, 0, 0.2) 0%,
-				rgba(0, 0, 0, 0.3) 50%, 
-				rgba(0, 0, 0, 0.7) 100%),
-			url("https://w.wallhaven.cc/full/13/wallhaven-13mk9v.jpg");
-		background-size: cover;
-		background-position: center 44%;
+		width: 700%;
 }
 
-.profileImg {
-		top:0;
-		margin-top: 13rem;
-		border-style: solid;
-		border-width: 9px;
-		border-color: #e6e6e6;
-		padding: 0;		
-		min-width: 200px;	
-}
+				.containerPage {
+						width: 100%;
 
-
+				}
 				</style>
+				{% endblock bg_css %}
 
 				<!-- Start Content -->
 
-				<div class="column position-relative " style="height: 40rem;">
+				{% block content %}		
+				<div class=" mb-5">
+						<div class="py-5 my-2 fluid  bg-danger" style=" height: 800" ><p>Helllo world</p></div>
 
-						<!-- Banner -->
-						<div class="coverImg h-75" ></div>
-
-						<!-- menu -->
-						<div class="column h-50 rounded-bottom shadow" >
-								<div class="row h-75" >
-										<img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 
-												 position-absolute" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg"/> 
-
-										<div class="w-50 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
-										<div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 " >
-												<h1 class="">Samantha Wong Choi Nu</h1>
-												<hr/>
-										</div>
-								</div>
-
-								<div class=" row bg-warning h-25  " >
-										<div class="bg-info col-xl-5 col-md-8 col-10 offset-1 offset-xl-4 offset-md-2 ">
-												<div >
-												<h1>menu panel</h1>
-										</div>
-								</div>
+						<div class="container-fluid">
+						<div class="row">
 
 
-						</div>
-
-				</div>
-
-				<div class=" bg-white py-5" ></div>
-				<div class=" bg-white py-5" ></div>
-
-				<div class="container">
-						<div class="col-10">
-								<div class="card shadow">
-										<div class="card-body text-center ">
-												<img height="250rem" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
+								<div class="col-md-13">
+										<div class="card mb-4 shadow">
+												<div class="card-body text-center ">
+														<img class="rounded-circle border shadow w-100 " 
+																 src="{{ memorial.imagen_de_perfil.url }}"/> 
+														<h4 class="card-title mt-3"> {{ memorial.get_full_name }} </h4>
+												</div >
 										</div >
 								</div>
 						</div>
-						<div class=" card md-3 shadow ">
-
 						</div>
 				</div>
-
+				{% endblock content %}
 				<!-- End of content -->
 				<!-- Footer-->
 				<footer class="footer bg-black text-center text-white-50">

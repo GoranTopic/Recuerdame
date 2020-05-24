@@ -23,7 +23,7 @@ class Memorial(models.Model):
     fecha_de_muerte = models.DateField(null=True, blank=False)
     
     # Images 
-    image_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )
+    imagen_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )
     imagen_de_perfil = models.ImageField(null=True, blank=True, upload_to='profiles/',  default='defaults/profile.jpg' )
 
     # use foreign keys 
