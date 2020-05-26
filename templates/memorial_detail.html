@@ -88,6 +88,7 @@
             -ms-transform: scale(1);
             transform: scale(1);
         }
+        
         @media (max-width: 450px) {
             .gallery {
                 -webkit-column-count: 1;
@@ -98,6 +99,7 @@
                 column-width: 100%;
             }
         }
+        
         @media (max-width: 400px) {
             .btn.filter {
                 padding-left: 1.1rem;
@@ -112,6 +114,12 @@
             background-position: center 44%;
         }
         
+        .whiteBoarder {
+            border-style: solid;
+            border-width: .3rem;
+            border-color: #fff;
+        }
+        
         .profileImg {
             top: 0;
             margin-top: 12rem;
@@ -122,18 +130,6 @@
             min-width: 200px;
         }
     </style>
-		<script type="text/javascript" >
-				$('#informacionBtn').on('click',function(){
-					$('#informacion').show();
-					$('#galeria').hide();
-				});
-				$('#galeria').on('click',function(){
-					$('#informacion').hide();
-					$('#galeria').show();
-				});
-		alert("Yeah!");
-		</script>
-
 
     <!-- Start Content -->
     <div class=" mb-5 column position-relative " style="height: 42rem;">
@@ -156,16 +152,16 @@
 
             <div class="row btn-group btn-group-lg 
 								col-xl-5 col-md-8 col-10 offset-1 offset-xl-3 offset-md-2 " role="group" style="overflow: hidden;">
-                <a class="col-3 btn btn-light" type="button" id="informacionBtn" ><i class="fas fa-book fa-2x"></i>
+                <a class="col-3 btn btn-light" type="button" id="informacionBtn"><i class="fas fa-book fa-2x"></i>
 					<p>Informacion</p>
 				</a>
-                <a class="col-3 btn btn-light" type="button" id="tributosBtn" ><i class="fas fa-monument fa-2x"></i>
+                <a class="col-3 btn btn-light" type="button" id="tributosBtn"><i class="fas fa-monument fa-2x"></i>
 					<p>Tributos</p>
 				</a>
-                <a class="col-3 btn btn-light" type="button" id="galeriaBtn" ><i class="fas fa-portrait fa-2x"></i>
+                <a class="col-3 btn btn-light" type="button" id="galeriaBtn"><i class="fas fa-portrait fa-2x"></i>
 					<p>Galeria</p>
 				</a>
-                <a class="col-3 btn btn-light" type="button" id="relacionesBtn" ><i class="fas fa-users fa-2x"></i>
+                <a class="col-3 btn btn-light" type="button" id="relacionesBtn"><i class="fas fa-users fa-2x"></i>
 					<p>Relaciones</p>
 				</a>
             </div>
@@ -176,14 +172,14 @@
     <div class="pt-5 contianer-fluid bg-dark">
         <div class="col-10 offset-1 shadow-lg bg-light rounded">
             <div class="mb-5 column card-body text-center ">
-                <img class="col-3"  src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
+                <img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
                 <h3>Septimbre 12th, 1970 - Noviembre 1st, 2013</h3>
                 <h3>"En nuestro pensamientos y corazones, simpre..."</h3>
             </div>
 
 
             <!-- start of information content  -->
-            <div class="container-fluid" id="informacion" style="display: block;">
+            <div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
                 <div class="my-5 container col-11">
                     <h1>Biographia</h1>
                     <hr />
@@ -272,15 +268,74 @@
             </div>
             <!-- End of information content -->
 
+
+            <!-- start of tributes content -->
+            <div class="pb-5 row continer col-12 content" id="tributos" style="display:block">
+
+                <div class="card mb-3 col-6" style="width: 40rem;">
+                    <img class="card-img-top" src="https://w.wallhaven.cc/full/96/wallhaven-967rgd.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p><i>"it nice to be importat, but is is more important to be nice" </i></p>
+                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
+									Title</cite></footer>
+                            <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-footer row text-muted">
+                        <div class="col-4 ">
+                            <p>2 days ago<br> <a> 4 comment </a> </p>
+                        </div>
+                        <div class="col-4 text-center pr-5">
+                            <a href="#" style="color:  red;">
+                                <i class="far fa-heart fa-2x"></i>
+                                <p>23</p>
+                            </a>
+                        </div>
+                        <div href="#" class="col-4 row">
+                            <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                            <p><a href="#">Jeniffer Puff</a> <br>sibling</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card  mb-3 col-6" style="width: 40rem;">
+                    <img class="card-img-top" src="https://w.wallhaven.cc/full/5w/wallhaven-5w82r1.jpg" alt="Card image cap">
+                    <div class="card-body">
+                        <blockquote class="blockquote mb-0">
+                            <p><i>"It is importat to be nice, but it is more nice to be important" </i></p>
+                            <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source Title</cite></footer>
+                            <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        </blockquote>
+                    </div>
+
+                    <div class="card-footer row text-muted">
+                        <div class="col-4 ">
+                            <p>2 days ago<br> <a> 4 comment </a> </p>
+                        </div>
+                        <div class="col-4 text-center pr-5">
+                            <a href="#" style="color:  red;">
+                                <i class="far fa-heart fa-2x"></i>
+                                <p>23</p>
+                            </a>
+                        </div>
+                        <div href="#" class="col-4 row">
+                            <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                            <p><a href="#">Jeniffer Puff</a> <br>sibling</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- end of tributes content -->
+
             <!-- start of gallery content -->
-            <div class="pb-5 continer col-12 content" id="galeria" style="display:true">
+            <div class="pb-5 continer col-12 content" id="galeria" style="display: block">
 
                 <!-- Grid row -->
-
                 <div class="row">
-
                     <!-- Grid column -->
-
                 </div>
                 <!-- Grid row -->
 
@@ -332,17 +387,60 @@
             <!-- End of gallery content -->
 
 
-            <!-- start of tributes content -->
-            <div class="continer col-12 content" id="tributos" style="display:none">
-            </div>
-            <!-- end of tributes content -->
-
-
             <!-- start of relationships content -->
-            <div class="continer col-12 content" id="relaciones" style="display:none">
+            <div class="continer col-12 content" id="relaciones" style="display:block">
+                <div class="mb-5 container col-11">
+                    <h1>Amigos</h1>
+                    <hr />
+                    <div class="row">
+                        <div class="p-3 text-center" href="#">
+                            <a href="#">
+                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                                <h3>Linda Estefay Wong</h3>
+                                <h4 class="muted text-dark">spouse</h4>
+                            </a>
+                        </div>
+
+                        <div class="p-3 text-center" href="#">
+                            <a href="#">
+                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                                <h3>Linda Estefay Wong</h3>
+                                <h4 class="muted text-dark">spouse</h4>
+                            </a>
+                        </div>
+                    </div>
+                    <h1>Padres</h1>
+                    <hr />
+                    <div class="row">
+                        <div class="p-3 text-center" href="#">
+                            <a href="#">
+                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                                <h3>Linda Estefay Wong</h3>
+                                <h4 class="muted text-dark">spouse</h4>
+                            </a>
+                        </div>
+
+                        <div class="p-3 text-center" href="#">
+                            <a href="#">
+                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                                <h3>Linda Estefay Wong</h3>
+                                <h4 class="muted text-dark">spouse</h4>
+                            </a>
+                        </div>
+
+                        <div class="p-3 text-center" href="#">
+                            <a href="#">
+                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                                <h3>Linda Estefay Wong</h3>
+                                <h4 class="muted text-dark">spouse</h4>
+                            </a>
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
             <!-- end of relationships content -->
-
         </div>
     </div>
     <!-- Footer-->
@@ -362,12 +460,18 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-
     </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
     </script>
-		<!-- Third party plugin JS-->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    <!-- Third party plugin JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
+    </script>
+    <script>
+        alert("Hellloo")
+    </script>
+
+
+
 </body>
 
 </html>
