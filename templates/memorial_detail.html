@@ -2,194 +2,361 @@
 <!-- template/memorial_base.html -->
 <!doctype html>
 <html lang="en">
-		<head>
-				<!-- Required meta tags -->
-				<meta charset="utf-8">
-				<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-				<!-- Bootstrap CSS -->
-				<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
-															 integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" 
-															 crossorigin="anonymous">
-				<!-- Load favicon -->
-				<!-- Font Awesome icons (free version)-->
-				<script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
-				<title>
-						Memorial 
-				</title>
-		</head>
-		<body>
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-				<!-- Navigation-->
-				<nav class="navbar navbar-expand-md shadow-lg navbar-dark bg-dark sticky-top" id="mainNav">
-						<div class="container-fluid">
-								<a class="navbar-brand " 
-									 href="#">Recuerdame</a>
-								<button class="navbar-toggler navbar-toggler-right"
-												type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" 
-																																														 aria-expanded="false" 
-																																														 aria-label="Toggle navigation">
-										<i class="fas fa-bars"></i>
-								</button>
-								<div class="collapse navbar-collapse" id="navbarResponsive">
-										<ul class="navbar-nav ml-auto">
-												<li class="nav-item">
-														<a class="nav-link" href="#">Que soy?</a>
-												</li>
-												<li class="nav-item">
-														<a class="nav-link" href="#">Covid-19</a>
-												</li>
-												<li class="nav-item">
-														<a class="nav-link" href="#">Busqueda</a>
-												</li>
-												<li class="nav-item">
-														<a class="nav-link" href="#">Contactanos</a>
-												</li>  
-												<div class="dropdown-divider"></div>
-												<li class="nav-item" >
-														<a class="nav-link  dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-																<i class="far fa-user-circle fa-1x"></i>
-																Mara
-														</a>
-														<div class="dropdown-menu bg-dark">
-																<a class="dropdown-item bg-dark text-light" href="#"> 
-																		<i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i>
-																		Salir de cuenta
-																</a>
-														</div>
-												</li>
-												<li class="nav-item">
-												</li>
-												<li class="nav-item">
-														<a class="nav-link " href="#">
-																<i class="fas fa-sign-in-alt"></i>
-																Ingresa
-														</a>
-												</li>
-												<li class="nav-item">
-														<a class="nav-link" href="#">
-																<i class="fas fa-user-plus"></i>
-																Registrate
-														</a>
-												</li>
-										</ul>
-								</div>
-						</div>
-				</nav>
-				<!-- Background picture style -->
-				<style>
-.coverContainer {
-		position: relative;
-		width: 80rem;
-		height: 20rem;
-		background: linear-gradient(
-				to bottom,
-				rgba(0, 0, 0, 0.2) 0%,
-				rgba(0, 0, 0, 0.6) 85%, 
-				rgba(0, 0, 0, 8.5) 100%),
-			url("https://w.wallhaven.cc/full/13/wallhaven-13mk9v.jpg");
-		background-position: center center;
-		background-repeat: no-repeat;
-		background-attachment: scroll;
-		background-size: cover;
-}
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Load favicon -->
+    <!-- Font Awesome icons (free version)-->
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+    <title>
+        Memorial
+    </title>
+</head>
 
-.coverImg {
-		position: relative;
-		background: linear-gradient(
-				to bottom,
-				rgba(0, 0, 0, 0.2) 0%,
-				rgba(0, 0, 0, 0.3) 50%, 
-				rgba(0, 0, 0, 0.7) 100%),
-			url("https://w.wallhaven.cc/full/13/wallhaven-13mk9v.jpg");
-		background-size: cover;
-		background-position: center 44%;
-}
+<body class="bg-dark">
+    <!-- Navigation-->
+    <nav class="navbar navbar-expand-md shadow-lg navbar-dark bg-dark sticky-top" id="mainNav">
+        <div class="container-fluid">
+            <a class="navbar-brand " href="#">Recuerdame</a>
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+				<i class="fas fa-bars"></i>
+			</button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Que soy?</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Covid-19</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Busqueda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Contactanos</a>
+                    </li>
+                    <div class="dropdown-divider"></div>
+                    <li class="nav-item">
+                        <a class="nav-link  dropdown-toggle" id="navbardrop" data-toggle="dropdown">
+                            <i class="far fa-user-circle fa-1x"></i> Mara
+                        </a>
+                        <div class="dropdown-menu bg-dark">
+                            <a class="dropdown-item bg-dark text-light" href="#">
+                                <i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i> Salir de cuenta
+                            </a>
+                        </div>
+                    </li>
+                    <li class="nav-item">
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link " href="#">
+                            <i class="fas fa-sign-in-alt"></i> Ingresa
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            <i class="fas fa-user-plus"></i> Registrate
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Background picture style -->
+    <style>
+        .gallery {
+            -webkit-column-count: 3;
+            -moz-column-count: 3;
+            column-count: 3;
+            -webkit-column-width: 33%;
+            -moz-column-width: 33%;
+            column-width: 33%;
+        }
+        
+        .gallery .pics {
+            -webkit-transition: all 350ms ease;
+            transition: all 350ms ease;
+        }
+        
+        .gallery .animation {
+            -webkit-transform: scale(1);
+            -ms-transform: scale(1);
+            transform: scale(1);
+        }
+        
+        @media (max-width: 450px) {
+            .gallery {
+                -webkit-column-count: 1;
+                -moz-column-count: 1;
+                column-count: 1;
+                -webkit-column-width: 100%;
+                -moz-column-width: 100%;
+                column-width: 100%;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .btn.filter {
+                padding-left: 1.1rem;
+                padding-right: 1.1rem;
+            }
+        }
+        
+        .coverImg {
+            position: relative;
+            background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.7) 100%), url("https://w.wallhaven.cc/full/13/wallhaven-13mk9v.jpg");
+            background-size: cover;
+            background-position: center 44%;
+        }
+        
+        .profileImg {
+            top: 0;
+            margin-top: 12rem;
+            border-style: solid;
+            border-width: 9px;
+            border-color: #fff;
+            padding: 0;
+            min-width: 200px;
+        }
+    </style>
 
-.profileImg {
-		top:0;
-		margin-top: 13rem;
-		border-style: solid;
-		border-width: 9px;
-		border-color: #e6e6e6;
-		padding: 0;		
-		min-width: 200px;	
-}
+    <!-- Start Content -->
+    <div class=" mb-5 column position-relative " style="height: 42rem;">
+
+        <!-- Banner -->
+        <div class="coverImg h-75"></div>
+
+        <!-- menu -->
+        <div class="column h-50 rounded-bottom shadow bg-light">
+            <div class="row h-50">
+                <img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 
+										position-absolute" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+                <div class="w-25 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
+                <hr />
+                <div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 ">
+                    <h1 class="">Samantha Wong Choi Nuddle</h1>
+                </div>
+                <hr />
+            </div>
+
+            <div class="row btn-group btn-group-lg 
+								col-xl-5 col-md-8 col-10 offset-1 offset-xl-3 offset-md-2 " role="group" style="overflow: hidden;">
+                <a class="col-3 btn btn-light active" type="button" href="#"><i class="fas fa-book fa-2x"></i>
+					<p>Informacion</p>
+				</a>
+                <a class="col-3 btn btn-light" type="button" href="#"><i class="fas fa-monument fa-2x"></i>
+					<p>Tributos</p>
+				</a>
+                <a class="col-3 btn btn-light" type="button" href="#"><i class="fas fa-portrait fa-2x"></i>
+					<p>Galleria</p>
+				</a>
+                <a class="col-3 btn btn-light" type="button" href="#"><i class="fas fa-users fa-2x"></i>
+					<p>Relaciones</p>
+				</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="continaer" style="height: 2rem"></div>
+    <div class="pt-5 continaer bg-dark">
+        <div class="col-10 offset-1 shadow-lg bg-light rounded">
+            <div class="mb-5 column card-body text-center ">
+                <img src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
+                <h3>Septimbre 12th, 1970 - Noviembre 1st, 2013</h3>
+                <h3>"En nuestro pensamientos y corazones, simpre..."</h3>
+            </div>
 
 
-				</style>
+            <!-- start of information content  -->
+            <div class="container-fluid" id="informaccion" style="display: none;">
+                <div class="my-5 container col-11">
+                    <h1>Biographia</h1>
+                    <hr />
+                    <div class="pl-3">
+                        <p>Linda passed away peacefully after a 3 year long battle with breast cancer on November 1st, 2013. She was a devoted mother to Sara, and Jeffrey and wife of Bill Hughes. Linda's life was dedicated to her greatest passion: caring
+                            for her patients. After completing her Nursing degree, she happily worked long hours at Chicago General up until two years before her passing. She would always come home and tell us all the amazing stories about her patients
+                            life. She loved playing outside with her children, watching Sara play soccer, and relaxing at home with her crochet. The family would like to thank the staff and doctors at Chicago general for taking such great care of her
+                            during her time of need.</p>
+                    </div>
+                </div>
+                <div class="my-5 container col-11 ">
+                    <h1>Sobre</h1>
+                    <table class="table table-hover bg-light ">
+                        <tbody class="ml-5">
+                            <tr>
+                                <td><b>Nombre:</b></td>
+                                <td>Samantha wong wu nuudle</td>
+                            </tr>
+                            <tr>
+                                <td><b>Fecha de Nacimiento:</b></td>
+                                <td>Not too long ago</td>
+                            </tr>
+                            <tr>
+                                <td><b>Fecha de Fallecimiento:</b></td>
+                                <td>Too soon</td>
+                            </tr>
+                            <tr>
+                                <td><b>Pais:</b></td>
+                                <td>United States, China</td>
+                            </tr>
+                            <tr>
+                                <td><b>Ciudad:</b></td>
+                                <td>Phonix</td>
+                            </tr>
+                        </tbody>
+                    </table>
 
-				<!-- Start Content -->
+                </div>
+                <div class="my-5 container col-11">
+                    <h1>Linea de Tiempo</h1>
+                    <table class=" table table-hover bg-light ">
+                        <tbody class="ml-5 ">
+                            <tr>
+                                <td><b>1982 - 1988</b></td>
+                                <td>Chicago High, High School, discoverd weed</td>
+                            </tr>
+                            <tr>
+                                <td><b>1992</b></td>
+                                <td>Had a baby!</td>
+                            </tr>
+                            <tr>
+                                <td><b>1999</b></td>
+                                <td>Got a boy friend</td>
+                            </tr>
+                            <tr>
+                                <td><b>2001</b></td>
+                                <td>Got married</td>
+                            </tr>
+                            <tr>
+                                <td><b>2008</b></td>
+                                <td>Did something interesting</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="my-5 container col-11">
+                    <h1>Familia</h1>
 
-				<div class="column position-relative " style="height: 40rem;">
+                    <table class=" table table-hover bg-light ">
+                        <tbody class="ml-5 ">
+                            <tr>
+                                <td><b>Spouse:</b></td>
+                                <td><a href="#"> Bill Hughes</a> </td>
+                            </tr>
+                            <tr>
+                                <td><b>Parents:</b></td>
+                                <td><a href="#"> Sally Taylor</a>, <a href="#">Charles Taylor</a> </td>
+                            </tr>
+                            <tr>
+                                <td><b>Grand-Parents:</b></td>
+                                <td><a href="#"> Grand Sally Taylor</a>, <a href="#"> Grand Charles Taylor</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <!-- End of infromation content -->
 
-						<!-- Banner -->
-						<div class="coverImg h-75" ></div>
+            <!-- start of gallery content -->
+            <div class="continer col-12 content" id="galleria" style="display:true">
 
-						<!-- menu -->
-						<div class="column h-50 rounded-bottom shadow" >
-								<div class="row h-75" >
-										<img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 
-												 position-absolute" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg"/> 
+                <!-- Grid row -->
 
-										<div class="w-50 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
-										<div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 " >
-												<h1 class="">Samantha Wong Choi Nu</h1>
-												<hr/>
-										</div>
-								</div>
+                <div class="row">
 
-								<div class=" row bg-warning h-25  " >
-										<div class="bg-info col-xl-5 col-md-8 col-10 offset-1 offset-xl-4 offset-md-2 ">
-												<div >
-												<h1>menu panel</h1>
-										</div>
-								</div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+
+                <!-- Grid row -->
+                <div class="gallery" id="gallery">
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 2">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 1">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
+                    </div>
+                    <div class="mb-3 pics animation all 1">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 1">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 2">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 2">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="mb-3 pics animation all 1">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg" alt="Card image cap">
+                    </div>
+                    <!-- Grid column -->
+
+                </div>
+                <!-- Grid row -->
+            </div>
+            <!-- End of gallery content -->
 
 
-						</div>
+            <!-- start of tributes content -->
+            <div class="continer col-12 content" id="tributos" style="display:none">
+            </div>
+            <!-- end of tributes content -->
 
-				</div>
 
-				<div class=" bg-white py-5" ></div>
-				<div class=" bg-white py-5" ></div>
+            <!-- start of relationships content -->
+            <div class="continer col-12 content" id="relaciones" style="display:none">
+            </div>
+            <!-- end of relationships content -->
 
-				<div class="container">
-						<div class="col-10">
-								<div class="card shadow">
-										<div class="card-body text-center ">
-												<img height="250rem" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
-										</div >
-								</div>
-						</div>
-						<div class=" card md-3 shadow ">
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="footer bg-dark text-white  text-center">
+        <div class="container bg-dark text-white">Copyright © Recuerdame 2020</div>
+        <a class="mx-3 mt-5" href="#!">
+            <i class="fab fa-twitter"></i>
+        </a>
+        <a class="mx-3" href="#!">
+            <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="mx-3" href="#!">
+            <i class="fab fa-github"></i>
+        </a>
+    </footer>
+    <!-- Bootstrap core JS-->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
+    </script>
+    <!-- Third party plugin JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+</body>
 
-						</div>
-				</div>
-
-				<!-- End of content -->
-				<!-- Footer-->
-				<footer class="footer bg-black text-center text-white-50">
-						<div class="container">Copyright © Your Website 2020</div>
-						<a class="mx-3 mt-5" href="#!">
-								<i class="fab fa-twitter"></i>
-						</a>
-						<a class="mx-3" href="#!">
-								<i class="fab fa-facebook-f"></i>
-						</a>
-						<a class="mx-3" href="#!">
-								<i class="fab fa-github"></i>
-						</a>
-				</footer>
-				<!-- Bootstrap core JS-->
-				<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" 
-								integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-				<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" 
-								integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-				<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-								integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
-				<!-- Third party plugin JS-->
-				<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
-		</body>
 </html>
-
