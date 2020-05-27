@@ -1,8 +1,8 @@
-<!-- Memorial Base view -->
+<!-- Memorial Detail View -->
 <!-- template/memorial_base.html -->
 <!doctype html>
-{% load static %}
 <html lang="en">
+
 <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -13,16 +13,13 @@
     <!-- Load favicon -->
     <!-- Font Awesome icons -->
     <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
-		{% block title %}
     <title>
         Memorial
     </title>
-		{% endblock title %}
 </head>
 
 <body class="bg-dark">
-		{% block navbar %}
-    <!-- Navigation bar-->
+    <!-- Navigation-->
     <nav class="navbar navbar-expand-md shadow-lg navbar-dark bg-dark sticky-top" id="mainNav">
         <div class="container-fluid">
             <a class="navbar-brand " href="#">Recuerdame</a>
@@ -70,9 +67,6 @@
             </div>
         </div>
     </nav>
-		{% endblock navbar %}
-
-		{% block css_style %}
     <!-- Background picture style -->
     <style>
         .gallery {
@@ -136,9 +130,7 @@
             min-width: 200px;
         }
     </style>
-		{% endblock css_style %}
 
-		{% block content %}
     <!-- Start Content -->
     <div class=" mb-5 column position-relative " style="height: 42rem;">
 
@@ -373,6 +365,8 @@
                     </div>
                 </div>
 
+
+
             </div>
             <!-- end of tributes content -->
 
@@ -487,7 +481,6 @@
                 </div>
             </div>
             <!-- end of relationships content -->
-						{% endblock content %}
         </div>
     </div>
     <!-- Footer-->
