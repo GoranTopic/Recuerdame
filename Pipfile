@@ -10,6 +10,7 @@ django = "*"
 pillow = "*"
 django-countries = "*"
 django-crispy-forms = "*"
+django-resized = "*"
 
 [requires]
 python_version = "3.6"

@@ -10,8 +10,8 @@ from django.http import HttpResponseRedirect
 
 # requiered field attibutes
 FIELDS = ( 'nombre', 'segundo_nombre', 'apellido', 'segundo_apellido',
-           'biografia' , 'fecha_de_nacimiento', 'fecha_de_muerte', 
-           'imagen_de_perfil', 'imagen_de_fondo')
+           'biografia' , 'fecha_de_nacimiento', 'fecha_de_muerte',  
+           'imagen_de_perfil', 'imagen_de_fondo', 'pais', 'epitafo', )
 
 
 class MemorialListView(ListView):

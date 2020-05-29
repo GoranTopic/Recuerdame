@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     # thrid party 
     'crispy_forms',
+    'django_countries',
     # local 
     'eulogies',
     'users',
@@ -140,8 +141,6 @@ LOGOUT_REDIRECT_URL = 'home'
 # define where to store the media files
 MEDIA_URL ='/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-
-
 
 
 

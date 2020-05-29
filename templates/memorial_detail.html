@@ -70,6 +70,7 @@
         border-width: 9px;
         border-color: #fff;
 				border-radius: 50%;
+				padding: 0;
     }
 </style>
 {% endblock css_style %}
@@ -78,12 +79,14 @@
 <!-- Start Content -->
 <div class=" mb-5 column position-relative " style="height: 42rem;">
     <!-- Banner -->
-    <div class="coverImg h-75"></div>
+    <div class="coverImg shadow-lg h-75"></div>
     <!-- menu -->
     <div class="column h-50 rounded-bottom shadow bg-light">
         <div class="row h-50">
-            <img class="profileImg shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 
-						position-absolute" src="{{ memorial.imagen_de_perfil.url }}" />
+            <img class="profileImg shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2  position-absolute"
+								 src="{{ memorial.imagen_de_perfil.url }}" />
+						<img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 position-absolute" 
+								 src="{{ memorial.imagen_de_perfil.url }}" />
             <div class="w-25 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
             <hr />
             <div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 ">
@@ -118,19 +121,16 @@
         <div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
             <div class="mb-5 column card-body text-center ">
                 <img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
-                <h3>Septimbre 12th, 1970 - Noviembre 1st, 2013</h3>
-                <h3>"En nuestro pensamientos y corazones, simpre..."</h3>
+								<h3>{{ memorial.fecha_de_nacimiento }} - {{ memorial.fecha_de_muerte}}</h3>
+								<h3>"{{ memorial.epitafo }}"</h3>
             </div>
 
 
             <div class="my-5 container col-11">
-                <h1>Biographia</h1>
+                <h1>Biografia</h1>
                 <hr />
                 <div class="pl-3">
-                    <p>Linda passed away peacefully after a 3 year long battle with breast cancer on November 1st, 2013. She was a devoted mother to Sara, and Jeffrey and wife of Bill Hughes. Linda's life was dedicated to her greatest passion: caring for
-                        her patients. After completing her Nursing degree, she happily worked long hours at Chicago General up until two years before her passing. She would always come home and tell us all the amazing stories about her patients life.
-                        She loved playing outside with her children, watching Sara play soccer, and relaxing at home with her crochet. The family would like to thank the staff and doctors at Chicago general for taking such great care of her during her
-                        time of need.</p>
+										<p>{{ memorial.biografia }}</p>
                 </div>
             </div>
             <div class="my-5 container col-11 ">
@@ -139,23 +139,28 @@
                     <tbody class="ml-5">
                         <tr>
                             <td><b>Nombre:</b></td>
-                            <td>Samantha wong wu nuudle</td>
+														<td>{{ memorial.get_full_name }} </td>
                         </tr>
                         <tr>
                             <td><b>Fecha de Nacimiento:</b></td>
-                            <td>Not too long ago</td>
+														<td>{{ memorial.fecha_de_nacimiento }}</td>
                         </tr>
                         <tr>
                             <td><b>Fecha de Fallecimiento:</b></td>
-                            <td>Too soon</td>
+                            <td>{{ memorial.fecha_de_muerte }}</td>
                         </tr>
                         <tr>
                             <td><b>Pais:</b></td>
-                            <td>United States, China</td>
+														<td>
+																{% for pais in memorial.pais %}
+																{{ pais }}
+																{% endfor %}
+
+														</td>
                         </tr>
                         <tr>
                             <td><b>Ciudad:</b></td>
-                            <td>Phonix</td>
+														<td>  </td>
                         </tr>
                     </tbody>
                 </table>
