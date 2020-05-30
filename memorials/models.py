@@ -16,7 +16,6 @@ class Memorial(models.Model):
     # Epitaph, the writting to engraved on tombs 
     epitafo = models.CharField(max_length=300, null=True, blank=False)
 
-
     #genral information
     biografia = models.TextField(max_length=10000)
     
@@ -26,6 +25,9 @@ class Memorial(models.Model):
     
     # Country
     pais = CountryField( blank=True, multiple=True)
+
+    # multi Value for timeline 
+    # -to be implemented-
 
     # Images 
     imagen_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )

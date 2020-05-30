@@ -6,7 +6,7 @@ from django.urls import include
 
 class Eulogy(models.Model):
     # user who's wrtting it 
-    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='user')
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='eulogy_user')
     # a quote
     quote = models.CharField(max_length=300, null=True, blank=True)
     # an anecdote

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_countries',
     # local 
     'eulogies',
+    'tributes',
     'users',
     'memorials',
     'pages',
