@@ -1,0 +1,29 @@
+<!-- Memorial List -->
+
+{% extends 'app_base.html' %}
+
+
+{% block title %}
+	
+<h3>This is a list of all the memorials </h3>
+	
+{% endblock title %}
+{% block content %}
+	
+	<h2> Todos los Memorativos: </h2>
+	<p>------------------------------------------</p>
+	{% for memorial in object_list %}
+	<a href="{% url 'memorial_detail' memorial.pk  %}">
+			<img src="{{ memorial.image_de_perfil.url|default:"nil" }}" height="42" width="42" alt="could not load image">
+			<h4> {{ memorial.get_full_name }}</h4>
+	</a>
+		<p>------------------------------------------</p>
+		<br>
+		<br>
+
+	{% endfor %}
+{% endblock content %}
+
+
+
+

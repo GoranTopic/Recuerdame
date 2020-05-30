@@ -26,16 +26,19 @@ class Memorial(models.Model):
     # Country
     pais = CountryField( blank=True, multiple=True)
 
+    # City
+    #city = to be implemente
+
     # multi Value for timeline 
-    # -to be implemented-
+    #linea_de_timpo = -to be implemented-
+
 
     # Images 
     imagen_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )
     #imagen_de_perfil = models.ImageField(null=True, blank=True, upload_to='profiles/',  default='defaults/profile.jpg' )
     imagen_de_perfil = ResizedImageField(null=True, blank=True, size=[1000, 1000], quality=100, crop=['middle', 'center'], upload_to='profiles/')
 
-
-    # use foreign keys 
+    # user foreign keys 
     creado_por = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
     manager = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='manager')
 

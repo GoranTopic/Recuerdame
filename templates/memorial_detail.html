@@ -157,42 +157,11 @@
 
 														</td>
                         </tr>
-                        <tr>
-                            <td><b>Ciudad:</b></td>
-														<td>  </td>
-                        </tr>
                     </tbody>
                 </table>
 
             </div>
-            <div class="my-5 container col-11">
-                <h1>Linea de Tiempo</h1>
-                <table class=" table table-hover bg-light ">
-                    <tbody class="ml-5 ">
-                        <tr>
-                            <td><b>1982 - 1988</b></td>
-                            <td>Chicago High, High School, discoverd weed</td>
-                        </tr>
-                        <tr>
-                            <td><b>1992</b></td>
-                            <td>Had a baby!</td>
-                        </tr>
-                        <tr>
-                            <td><b>1999</b></td>
-                            <td>Got a boy friend</td>
-                        </tr>
-                        <tr>
-                            <td><b>2001</b></td>
-                            <td>Got married</td>
-                        </tr>
-                        <tr>
-                            <td><b>2008</b></td>
-                            <td>Did something interesting</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            <div class="my-5 container col-11">
+						<div class="my-5 container col-11">
                 <h1>Familia</h1>
 
                 <table class=" table table-hover bg-light ">
@@ -218,37 +187,40 @@
         <!-- start of tributes content -->
         <div class="p-2 row content" id="tributos" style="display: none;">
 
-            <div class="mb-3 col-11 col-md-4">
-                <div class="card">
-                    <img class="card-img-top" src="https://w.wallhaven.cc/full/96/wallhaven-967rgd.jpg" alt="Card image cap">
+
+						{% for tribute in	memorial.tributes.all %}			
+						<div class="mb-3 col-11 col-md-4">
+                <div class="card ">
+										<img class="card-img-top" src="https://w.wallhaven.cc/full/5w/wallhaven-5w82r1.jpg" alt="Card image cap">
                     <div class="card-body">
                         <blockquote class="blockquote mb-0">
-                            <p><i>"it nice to be importat, but is is more important to be nice" </i></p>
+														<p><i>"{{ tribute.quote }}" </i></p>
                             <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
 									Title</cite></footer>
-                            <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+														<p class="card-text py-4">{{ tribute.writting }}</p>
                         </blockquote>
                     </div>
 
-                    <div class="card-footer row  align-items-center">
+                    <div class="card-footer row text-muted">
                         <div class="col-4 ">
-                            <p>1 days ago<br> <a> 5 comment </a> </p>
+														<p>{{ tribute.creation_time }}<br> 
+														<a>{{ tribute.comments_count }}</a> </p>
                         </div>
                         <div class="col-3 text-center pr-5">
                             <a href="#" style="color:  red;">
                                 <i class="far fa-heart fa-2x"></i>
-                                <p>12</p>
+																<p>{{ tribute.likes_count }}</p>
                             </a>
                         </div>
                         <div href="#" class="col-5 row">
                             <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
 
-                            <p><a href="#">Jeniffer Puff</a> <br> sister</p>
+														<p><a href="#">{{ tribute.user }}</a> <br> sister</p>
                         </div>
                     </div>
                 </div>
             </div>
-
+						{% endfor %}
             <div class="mb-3 col-11 col-md-4">
                 <div class="card ">
                     <img class="card-img-top" src="https://w.wallhaven.cc/full/5w/wallhaven-5w82r1.jpg" alt="Card image cap">
