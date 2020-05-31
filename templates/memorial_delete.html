@@ -1,0 +1,41 @@
+<!-- Memorial List -->
+{% extends 'app_base.html' %}
+
+{% block title %}
+{% endblock title %}
+{% block content %}
+	
+<div class=" article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" 
+		style="height: 30rem;" >
+
+		<h2>Borrar {{object.get_full_name }}</h2>
+		<hr/>
+		<h3> ¿Estas Seguro que quieres borran este memorial?<h3>
+		<form action=""  method="POST">
+		{% csrf_token %}
+		{{ form.as_p }} 
+		<button class="btn btn-danger ml-2" type="submit">
+				<i class="far fa-minus-square fa-2x"></i>
+				Borrar
+		</button>
+		<a class="btn btn-info ml-2 text-white" 
+			 href="{% url 'memorial_detail' memorial.pk %}"
+				type="button">
+
+
+				<i class="fas fa-arrow-circle-left fa-2x"></i>
+				Atras
+		</a>
+		</form>
+
+</div>
+
+
+		</div>
+</div>
+{% endblock content %}
+
+
+
+
+

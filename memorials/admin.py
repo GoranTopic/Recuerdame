@@ -12,6 +12,6 @@ class TributeInline(admin.TabularInline):
     model = Tribute
 
 class adminMemorial(admin.ModelAdmin):
-    inline = [ EulogyInline ]
+    inline = [ EulogyInline, ]
 
 admin.site.register(Memorial, adminMemorial)

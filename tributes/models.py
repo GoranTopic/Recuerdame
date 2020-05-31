@@ -16,7 +16,7 @@ class Tribute(models.Model):
     # writting
     writting = models.TextField(max_length=1000, null=True, blank=True)
     # an image
-    image = models.ImageField(null=True, blank=True, upload_to='tributes/')
+    cover_image = models.ImageField(null=True, blank=True, upload_to='tributes/')
     # creation time
     creation_time = models.DateTimeField(auto_now_add=True, blank=True)
     # likes count 

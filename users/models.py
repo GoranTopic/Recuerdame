@@ -5,5 +5,7 @@ from django_countries.fields import CountryField
 
 class CustomUser(AbstractUser):
     country = CountryField(multiple=True, blank=True)   
+    profile_image = models.ImageField(blank=True, default='default/profile.jpg', upload_to='users/profiles')
+
 
 

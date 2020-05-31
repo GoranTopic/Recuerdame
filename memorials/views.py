@@ -13,7 +13,6 @@ FIELDS = ( 'nombre', 'segundo_nombre', 'apellido', 'segundo_apellido',
            'biografia' , 'fecha_de_nacimiento', 'fecha_de_muerte',  
            'imagen_de_perfil', 'imagen_de_fondo', 'pais', 'epitafo', )
 
-
 class MemorialListView(ListView):
     model = Memorial
     template_name = 'memorial_list.html'
@@ -30,7 +29,7 @@ class MemorialUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     def test_func(self):
         ''' checks if the user is the same as the creator '''
         obj = self.get_object()
-        return obj.creator == self.request.user
+        return obj.creado_por == self.request.user
 
 class MemorialDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Memorial
@@ -40,7 +39,7 @@ class MemorialDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     def test_func(self):
         ''' checks if the user is the same as the creator '''
         obj = self.get_object()
-        return obj.creator == self.request.user
+        return obj.creado_por == self.request.user
 
 class MemorialCreateView(LoginRequiredMixin, CreateView):
     model = Memorial

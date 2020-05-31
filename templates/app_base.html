@@ -25,47 +25,51 @@
     <!-- Navigation bar-->
     <nav class="navbar navbar-expand-md shadow-lg navbar-dark bg-dark sticky-top" id="mainNav">
         <div class="container-fluid">
-            <a class="navbar-brand " href="#">Recuerdame</a>
+						<a class="navbar-brand " href="{% url 'home' %}">Recuerdame</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                 <i class="fas fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Que soy?</a>
+												<a class="nav-link" href="{% url 'home' %}#about">Que soy?</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Covid-19</a>
+												<a class="nav-link" href="{% url 'home' %}#projects">Covid-19</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Busqueda</a>
+												<a class="nav-link" href="{% url 'home' %}#">Busqueda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Contactanos</a>
+												<a class="nav-link" href="{% url 'home' %}#">Contactanos</a>
                     </li>
+										{% if user.is_authenticated %}
                     <div class="dropdown-divider"></div>
                     <li class="nav-item">
                         <a class="nav-link  dropdown-toggle" id="navbardrop" data-toggle="dropdown">
-                            <i class="far fa-user-circle fa-1x"></i> Mara
+														<i class="far fa-user-circle fa-1x"></i> 
+														{{ user.username }}
                         </a>
                         <div class="dropdown-menu bg-dark">
-                            <a class="dropdown-item bg-dark text-light" href="#">
+														<a class="dropdown-item bg-dark text-light" href="{% url 'logout' %}">
                                 <i class="fas fa-sign-out-alt fa-1x" aria-hidden="true"></i> Salir de cuenta
                             </a>
                         </div>
                     </li>
+										{% else %}
                     <li class="nav-item">
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link " href="#">
+												<a class="nav-link " href="{% url 'login' %}">
                             <i class="fas fa-sign-in-alt"></i> Ingresa
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+												<a class="nav-link" href="{% url 'signup' %}">
                             <i class="fas fa-user-plus"></i> Registrate
                         </a>
                     </li>
+										{% endif %}
                 </ul>
             </div>
         </div>
