@@ -1,14 +1,14 @@
 from django.urls import path, include
 from .views import ( TributeDetailView, TributeListView, 
-        TributeUpdateView, TributeDeleteView, TributeCreateView )
+        TributeUpdateView, TributeDeleteView, TributeCreateView, create_view )
 
 
 
 urlpatterns = [ 
-        path('list', TributeListView.as_view(), name='tribute_list'),
-        path('<int:pk>/detail', TributeDetailView.as_view(), name='tribute_detail'),
-        path('<int:pk>/update', TributeUpdateView.as_view(), name='tribute_update'),
-        path('<int:pk>/delete', TributeDeleteView.as_view(), name='tribute_delete'),
-        path('new', TributeCreateView.as_view(), name='tribute_new'),
+        path('<int:memorial_pk>/list', TributeListView.as_view(), name='tribute_list'),
+        path('<int:memorial_pk>/<int:pk>/detail', TributeDetailView.as_view(), name='tribute_detail'),
+        path('<int:memorial_pk>/<int:pk>/update', TributeUpdateView.as_view(), name='tribute_update'),
+        path('<int:memorial_pk>/<int:pk>/delete', TributeDeleteView.as_view(), name='tribute_delete'),
+        path('<int:memorial_pk>/new', create_view, name='tribute_new'),
         ]
 

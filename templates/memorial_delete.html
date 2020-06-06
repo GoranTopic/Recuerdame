@@ -1,5 +1,6 @@
 <!-- Memorial List -->
 {% extends 'app_base.html' %}
+{% load crispy_forms_tags %}
 
 {% block title %}
 {% endblock title %}
@@ -11,9 +12,9 @@
 		<h2>Borrar {{object.get_full_name }}</h2>
 		<hr/>
 		<h3> ¿Estas Seguro que quieres borran este memorial?<h3>
-		<form action=""  method="POST">
+		<form enctype="multipart/form-data"  method="POST">
 		{% csrf_token %}
-		{{ form.as_p }} 
+		{{ form|crispy }} 
 		<button class="btn btn-danger ml-2" type="submit">
 				<i class="far fa-minus-square fa-2x"></i>
 				Borrar

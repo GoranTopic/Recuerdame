@@ -11,6 +11,8 @@ class Tribute(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='tribute_user')
     # a quote
     quote = models.TextField(max_length=1000, null=True, blank=True)
+    # a quote author
+    quote_author = models.CharField(max_length=100, null=True, blank=True)
     # an anecdote
     anecdote = models.TextField(max_length=1000, null=True, blank=True)
     # writting

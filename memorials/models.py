@@ -14,7 +14,7 @@ class Memorial(models.Model):
     segundo_apellido  = models.CharField(max_length=100, null=True, blank=True)
 
     # Epitaph, the writting to engraved on tombs 
-    epitafo = models.CharField(max_length=300, null=True, blank=False)
+    epitafo = models.TextField(max_length=300, null=True, blank=False)
 
     #genral information
     biografia = models.TextField(max_length=10000)

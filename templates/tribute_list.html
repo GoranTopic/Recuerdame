@@ -4,24 +4,28 @@
 
 
 {% block title %}
-	
-<h3>This is a list of all the memorials </h3>
-	
 {% endblock title %}
 {% block content %}
 	
-	<h2> Todos los Memorativos: </h2>
-	<p>------------------------------------------</p>
-	{% for memorial in object_list %}
-	<a href="{% url 'memorial_detail' memorial.pk  %}">
-			<img src="{{ memorial.image_de_perfil.url|default:"nil" }}" height="42" width="42" alt="could not load image">
-			<h4> {{ memorial.get_full_name }}</h4>
-	</a>
-		<p>------------------------------------------</p>
+<div class=" container text-center mb-5 column position-relative bg-light rounded shadow-lg" 
+		height="48rem" >
+		<h2> Todos los Memorativos: </h2>
+		<hr/>
+		{% for memorial in object_list %}
+		<a href="{% url 'memorial_detail' memorial.pk  %}">
+				<div clas=" py-5 container row mx-5">
+						<img class=" rounded" width=200rem  
+						 src="{{ memorial.imagen_de_perfil.url|default:"nil" }}"
+						alt="could not load image">
+						<h2>{{ memorial.get_full_name }}</h2>
+				</div>
+		</a>
 		<br>
 		<br>
 
-	{% endfor %}
+		{% endfor %}
+
+</div>
 {% endblock content %}
 
 

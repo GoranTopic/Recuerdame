@@ -105,7 +105,7 @@
 						<a class="col-2 btn btn-light" id="tributosBtn"><i class="fas fa-monument fa-2x"></i>
 								<p>Tributos</p>
 						</a>
-						<a class="col-2 btn btn-light" id="galeriaBtn"><i class="fas fa-portrait fa-2x"></i>
+						<a class="col-2 btn btn-light" id="galeriaBtn"><i class="fas fa-images fa-2x"></i>
 								<p>Galeria</p>
 						</a>
 						<a class="col-2 btn btn-light" id="relacionesBtn"><i class="fas fa-users fa-2x"></i>
@@ -174,8 +174,6 @@
 												</table>
 										</div>
 								</div>
-                
-
             </div>
 						<div class="my-5 container col-11">
                 <h1>Familia</h1>
@@ -213,7 +211,6 @@
 										</div>
 										<div class="col-6 column text-center">
 												<a class="btn btn-danger text-white"
-
 													 href="{% url 'memorial_delete' memorial.pk %}"
 													 type="button" >
 														<i class="fas fa-eraser fa-2x"></i>
@@ -233,7 +230,7 @@
         <!-- End of information content -->
 
         <!-- start of tributes content -->
-        <div class="p-2 row content" id="tributos" style="display: none;">
+				<div class="p-2 row content" id="tributos" style="display: none;">
 
 						{% for tribute in	memorial.tributes.all %}			
 						<div class="mb-3 col-11 col-md-4">
@@ -246,9 +243,12 @@
 												{% if tribute.quote %}
                         <blockquote class="blockquote mb-0">
 														<p><i>"{{ tribute.quote }}" </i></p>
+
+														{% if tribute.quote_author %}
 														<footer class="blockquote-footer">
-																Someone famous in <cite title="Source Title">Source Title </cite>
+																{{ tribute.quote_author }}
 														</footer>
+														{% endif %}
                         </blockquote>
 												{% endif %}
 
@@ -288,6 +288,19 @@
                 </div>
             </div>
 						{% endfor %}
+						<a href="{% url 'tribute_new' memorial.pk  %}">
+								<div class="mb-3 col-11 col-md-4">
+										<div class="card bg-dark shadow-lg text-dark">
+												<img class="card-img" src="{% static 'img/add_card.jpg' %}" alt="Card image cap">
+												<div class="card-img-overlay text-center shadow">
+														<h5 class="card-title">Nuevo Tributo</h5>
+														<p class="card-text">Crear un Tributo</p>
+												</div>
+										</div>
+								</div>
+						</a>
+
+
         </div>
         <!-- end of tributes content -->
 
