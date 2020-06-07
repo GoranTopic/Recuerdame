@@ -27,7 +27,16 @@ class Tribute(models.Model):
     comments_count = models.IntegerField(null=True, blank=False)
 
     def __str__(self):
-        return self.writting
+        string = ''
+        if self.quote != None: 
+            string = self.quote
+        elif self.anecdote != None:
+            string = self.anecdote
+        elif self.writting != None:
+            string = self.quote
+        else:
+            string += "by " +  self.user
+        return string
 
     def get_absolute_url(self):
         return reverse('tribute_detail', args=[str(self.id)])
@@ -44,7 +53,7 @@ class Comment(models.Model):
         return self.comment
 
 class Like(models.Model):
-     # author 
+    # author 
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     # Foregn key for the tribute
     tribute = models.ForeignKey(Tribute, on_delete=models.CASCADE, related_name='likes')

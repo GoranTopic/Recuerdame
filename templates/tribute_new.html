@@ -35,16 +35,14 @@ Crear Tu Memoriativo
 {% block masthead %}
 <header class="masthead">
 		<div class="mx-auto text-center">
-				   <h1 class="text-white mx-auto mt-3 mb-5">Memorativo</h1>
-						<form method="post" enctype="multipart/form-data" class="container
-						text-white-50
-						font-weight-bold
-						h4
-						">
-								<div class="form-group">
-									{% csrf_token %}
-									{{ form|crispy }}
-								</div>
+				<h1 class="text-white mx-auto mt-3 mb-5">Memorativo</h1>
+				<form method="post" 
+							enctype="multipart/form-data" 
+							class="container text-white-50 font-weight-bold h4">
+						<div class="form-group">
+								{% csrf_token %}
+								{{ form|crispy }}
+						</div>
 						<button type="submit" class="btn btn-primary js-scroll-trigger">Crear</button>
 				</form>
 		</div>
