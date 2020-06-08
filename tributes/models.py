@@ -45,10 +45,11 @@ class Comment(models.Model):
     # Foregn key for the tribute
     tribute = models.ForeignKey(Tribute, on_delete=models.CASCADE, related_name='comments')
     # comment text
-    comment = models.TextField(max_length=500, null=True, blank=False) 
+    comment = models.TextField(max_length=10000, null=True, blank=False) 
     # author 
     author = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
-
+    # creation time
+    creation_time = models.DateTimeField(auto_now_add=True, blank=True)
     def __str__(self):
         return self.comment
 

@@ -117,31 +117,31 @@
 
 <div class="continaer" style="height: 2rem"></div>
 <div class="pt-5 contianer-fluid bg-dark" style="min-height: 50rem">
-    <div class="col-10 offset-1 shadow-lg bg-light rounded">
+		<div class="col-10 offset-1 shadow-lg bg-light rounded">
 
-        <!-- start of information content  -->
-        <div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
-            <div class="mb-5 column card-body text-center ">
-                <img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
+				<!-- start of information content  -->
+				<div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
+						<div class="mb-5 column card-body text-center ">
+								<img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
 								<h3>{{ memorial.fecha_de_nacimiento }} - {{ memorial.fecha_de_muerte}}</h3>
 								<h3>{{ memorial.epitafo }}</h3>
-            </div>
+						</div>
 
 
-            <div class="my-5 container col-11">
-                <h1>Biografia</h1>
-                <hr />
+						<div class="my-5 container col-11">
+								<h1>Biografia</h1>
+								<hr />
 								<div class="row">
 										<div class="col-12 m-3 col-xl-1">
 												<i class="fas offset-1 fa-book fa-5x"></i>
 										</div>
 										<div class="pl-3 text-center col-10 column">
-										<p>{{ memorial.biografia }}</p>
+												<p>{{ memorial.biografia }}</p>
 										</div>
 								</div>
-            </div>
-            <div class="my-5 container col-11 ">
-                <h1>Sobre</h1>
+						</div>
+						<div class="my-5 container col-11 ">
+								<h1>Sobre</h1>
 								<hr/>
 								<div class="row">
 										<div class="col-12 m-3 col-xl-1">
@@ -174,9 +174,9 @@
 												</table>
 										</div>
 								</div>
-            </div>
+						</div>
 						<div class="my-5 container col-11">
-                <h1>Familia</h1>
+								<h1>Familia</h1>
 								<hr/>
 								<div class="row">
 										<div class="col-12 m-3 col-xl-1">
@@ -201,7 +201,7 @@
 												</table>
 										</div>
 								</div>
-            </div>
+						</div>
 						<div class="my-5 container col-11">
 								<h1>Opciones</h1>
 								<hr/>
@@ -213,44 +213,46 @@
 												<a class="btn btn-danger text-white"
 													 href="{% url 'memorial_delete' memorial.pk %}"
 													 type="button" >
-														<i class="fas fa-eraser fa-2x"></i>
-														Borrar
+													 <i class="fas fa-eraser fa-2x"></i>
+													 Borrar
 												</a>
 												<a class="btn btn-info text-white"
 													 href="{% url 'memorial_update' memorial.pk %}"
 													 type="button" >
-														<i class="fas fa-user-edit fa-2x"></i>
-														Cambiar
+													 <i class="fas fa-user-edit fa-2x"></i>
+													 Cambiar
 												</a>
 										</div>
 								</div>
 						</div>
 
-        </div>
-        <!-- End of information content -->
+				</div>
+				<!-- End of information content -->
 
-        <!-- start of tributes content -->
+				<!-- start of tributes content -->
 				<div class="p-2 row content" id="tributos" style="display: none;">
 
 						{% for tribute in	memorial.tributes.all %}			
 						<div class="mb-3 col-11 col-md-4">
 								<div class="card ">
 										<div class="px-2 mx-1 dropdown position-absolute shadow rounded" 
-												 style="background: rgba(0,0,0,.3);">
+												 style="background: rgba(0,0,0,.6);">
 												<button class="btn dropdown-toggle" type="button" 
 																														id="dropdownMenuButton" data-toggle="dropdown">
 														<i class="fas fa-caret-down fa-2x text-white"
-															 style="opacity: .3"></i>
+															 style="opacity: .9"></i>
 												</button>
 												<div class="dropdown-menu bg-dark"
-														 style="opacity: .7;">
+														 style="opacity: .9;">
 														<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_detail' tribute.pk %}">Detalles</a>
 														<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_update' tribute.pk %}">Cambiar</a>
 														<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_delete' tribute.pk %}">Borrar</a>
 												</div>
 										</div>
 										{% if tribute.cover_image %}
-										<img class="card-img-top" src="{{ tribute.cover_image.url }}" alt="Card image cap">
+										<a href="{% url 'tribute_detail' tribute.pk %}">
+												<img class="card-img-top" src="{{ tribute.cover_image.url }}" alt="Card image cap">
+										</a>
 										{% endif %}
 										<div class="card-body text-center">
 												{% if tribute.quote %}
@@ -274,11 +276,11 @@
 												{% endif %}
 										</div>
 
-										<div class="card-footer  text-muted">
+										<div class="card-footer text-muted">
 												<div class="row">
 														<div class="col-4 ">
 																<p>{{ tribute.creation_time }}<br> 
-																<a>{{ tribute.comments_count }} comments</a> </p>
+																<a>{{ tribute.comments.count }} comments</a> </p>
 														</div>
 														<div class="col-3 text-center pr-5">
 																<a href="#" style="color:  red;">
@@ -313,54 +315,40 @@
 										</div>
 								</div>
 						</a>
-        </div>
-        <!-- end of tributes content -->
+				</div>
+				<!-- end of tributes content -->
 
-        <!-- start of gallery content -->
-        <div class="pb-5 continer col-12 content" id="galeria" style="display: none">
-            <!-- Grid row -->
-            <div class="row">
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-            <!-- Grid row -->
-            <div class="gallery" id="gallery">
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                </div>
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-        </div>
+				<!-- start of gallery content -->
+				<div class="pb-5 continer col-12 content" id="galeria" style="display: none">
+						<!-- Grid row -->
+						<div class="row">
+								<!-- Grid column -->
+						</div>
+						<!-- Grid row -->
+						<!-- Grid row -->
+						<div class="gallery" id="gallery">
+
+								{% for tribute in	memorial.tributes.all %}			
+								{% if tribute.cover_image %}
+								<!-- Grid column -->
+								<div class="mb-3 pics animation all {% cycle '1' '2' %}">
+										<img class="img-fluid" src="{{ tribute.cover_image.url }}" alt="Card image cap">
+								</div>
+								<!-- Grid column -->
+								{% endif %}
+								{% endfor %}
+
+						</div>
+						<!-- Grid row -->
+						<div class="text-center mb-3 mt-5 ">
+								<a href="#">
+										<img class="img-fluid" 
+												 style="heigh: 8rem; width: 8rem; opacity:.4"
+												 src="{% static 'img/add_card.jpg' %}">
+								</a>
+
+						</div>
+				</div>
         <!-- End of gallery content -->
 
         <!-- start of relationships content -->

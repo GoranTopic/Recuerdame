@@ -1,53 +1,31 @@
 <!-- sign up html is used by sign up view which uses creatUserForm -->
-{% extends 'pages_base.html' %}
-{% load static %}
+<!-- Memorial List -->
+{% extends 'app_base.html' %}
 {% load crispy_forms_tags %}
 
 {% block title %}
-Crear Tu Memoriativo
 {% endblock title %}
+{% block content %}
+	
+<div class=" py-5 article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" >
 
-<!-- Background picture style -->
-{% block bg_css %}
-<style>
-.masthead {
-		position: relative;
-		width: 100%;
-		height: auto;
-		min-height: 60rem;
-		padding: 8rem 0;
-		background: linear-gradient(
-				to bottom,
-				rgba(0, 0, 0, 0.2) 0%,
-				rgba(0, 0, 0, 0.6) 85%, 
-				rgba(0, 0, 0, 8.5) 100%),
-				url("{% static 'img/sunset-675847_1920.jpg' %}");
-		background-position: center;
-		background-repeat: no-repeat;
-		background-attachment: scroll;
-		background-size: cover;
-	}
-</style>
-{% endblock bg_css %}
+		<h2>Tributo</h2>
+		<hr/>
+		<form enctype="multipart/form-data" method="POST">
+				{% csrf_token %}
+				{{ form|crispy }} 
+
+				<button class="btn btn-primary ml-2" type="submit">
+						<i class="fas fa-check-circle fa-2x"></i>
+						Crear
+				</button>
+		</form>
+
+</div>
+
+{% endblock content %}
 
 
-<!-- Masthead-->
-{% block masthead %}
-<header class="masthead">
-		<div class="mx-auto text-center">
-				<h1 class="text-white mx-auto mt-3 mb-5">Memorativo</h1>
-				<form method="post" 
-							enctype="multipart/form-data" 
-							class="container text-white-50 font-weight-bold h4">
-						<div class="form-group">
-								{% csrf_token %}
-								{{ form|crispy }}
-						</div>
-						<button type="submit" class="btn btn-primary js-scroll-trigger">Crear</button>
-				</form>
-		</div>
-</header>
-{% endblock masthead %}
 
 
 

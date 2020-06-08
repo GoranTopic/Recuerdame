@@ -77,6 +77,16 @@
 {% block content %}
 <!-- Start Content -->
 <div class=" py-4 article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" >
+		<div class="pull-right col-2">
+				<a class="btn btn-info col-10 ml-2 text-white align-text-middle" 
+					 href="{% url 'memorial_detail' tribute.memorial.pk %}"
+					 type="button">
+						<div class="col-12">
+								<i class="fas fa-arrow-circle-left fa-2x"></i>
+						</div>
+						Memorial
+				</a>
+		</div>
 		<hr/>
 		<div class="mb-3 col-12">
 				<div class="card ">
@@ -100,10 +110,13 @@
 						<div class="card-body">
 								{% if tribute.quote %}
 								<blockquote class="blockquote mb-0">
-										<p><i>"{{ tribute.quote }}" </i></p>
+										<p><i>"{{ tribute.quote }}"</i></p>
+										{% if tribute.quote_author %}
 										<footer class="blockquote-footer">
-												Someone famous in <cite title="Source Title">Source Title </cite>
+
+												{{ tribute.quote_author }}
 										</footer>
+										{% endif %}
 								</blockquote>
 								{% endif %}
 								{% if tribute.quote %}
@@ -117,7 +130,6 @@
 								<div class="row">
 										<div class="col-4 text-center">
 												<p>{{ tribute.creation_time }}<br> 
-												<a>{{ tribute.comments_count }} comments</a> </p>
 										</div>
 										<div class="col-3 text-center pr-5">
 												<a href="#" style="color:  red;">
@@ -125,7 +137,7 @@
 														<p>{{ tribute.likes_count }}</p>
 												</a>
 										</div>
-										<div href="#" class="col-5 row text-center">
+										<div class="col-5 row text-center">
 												{% if tribute.user.profile_image %}
 												<img class="mx-3 shadow rounded-circle"
 														 style="width: 3rem; height: 3rem;" 
@@ -142,6 +154,58 @@
 				</div>
 		</div>
 		<hr/>
+		<!-- start of comment section -->
+		<div class="container ">
+
+				{% for comment in  tribute.comments.all %}
+				<div class="row  col-11 ">
+						<div class="col-2"
+								 style="width: 6rem;" >
+								 <img class=" mt-3 mx-3 shadow rounded-circle"
+											style="width: 6rem; height: 6rem;" 
+											src="{% static 'defaults/profile.jpg' %}" alt="coud not load"/>
+						</div>
+						<div class="row col-10 text-left">
+								<div class="col-12 align-text-middle" >
+										<span class="align-text-middle"> {{ comment.author }}  <span class="text-muted">| sister <span></span>
+								</div>
+								<div class="p-2 my-1 bg-white text-dark border rounded col-12">
+										<span>{{ comment.comment }}</span>
+								</div>
+								<div class="ml-4  col-12 align-middle text-muted" >
+										<span class="align-baseline" >{{ comment.creation_time }}</span>
+								</div>
+						</div>
+				</div>
+
+				<hr/>
+				{% endfor %}
+
+
+				<div class="row  col-11 ">
+						<div class="col-2"
+								 style="width: 6rem;" >
+								 <img class=" mt-3 mx-3 shadow rounded-circle"
+											style="width: 6rem; height: 6rem;" 
+											src="{% static 'defaults/profile.jpg' %}" alt="coud not load"/>
+						</div>
+								<div class="row col-10 text-left">
+										<div class="col-12 align-text-middle" >
+												<span class="align-text-middle"> {{ user.username }} <span class="text-muted">| sister <span></span>
+										</div>
+										<div class="input-group">
+												<textarea class="form-control" placeholder="Tu comentario..." aria-label="mandar"></textarea>
+												<div class="input-group-prepend">
+														<button class="btn btn-outline-secondary input-group-text">
+																<i class="far fa-comment-alt fa-3x"></i>
+														</button>
+												</div>
+										</div>
+								</div>
+				</div>
+
+
+		</div>
 </div>
 <!-- end of tributes content -->
 {% endblock content %}

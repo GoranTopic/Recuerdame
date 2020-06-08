@@ -11,7 +11,7 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 # requiered field attibutes
-FIELDS = ('quote', 'anecdote', 'writting', 'cover_image')
+FIELDS = ('quote', 'quote_author', 'anecdote', 'writting', 'cover_image')
 
 
 
