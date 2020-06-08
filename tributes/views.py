@@ -13,13 +13,13 @@ from django.http import HttpResponseRedirect
 # requiered field attibutes
 FIELDS = ('quote', 'anecdote', 'writting', 'cover_image')
 
+
+
 def create_view(request, memorial_pk):
     context = {} 
-
     if request.method == 'POST':
         # if the user sendPost request
         form = TributeForm(request.POST)
-
         if form.is_valid():
             # if the form is valid trought the TributeForm 
             # set request user as tribute user
@@ -32,10 +32,8 @@ def create_view(request, memorial_pk):
             form.instance.cover_image = files['cover_image']
             # create instance of tribute model
             form.save()
-
         context['form'] = form
         return HttpResponseRedirect(reverse('memorial_detail', kwargs={'pk': memorial_pk}))
-
     else:
         #other request method such as GET
         form = TributeForm()
@@ -52,7 +50,7 @@ class TributeUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     template_name = 'tribute_update.html'
     fields = FIELDS
     login_url = 'login'
-    success_url = reverse_lazy('tribute_lis')
+    #success_url = reverse_lazy('tribute_detail')
     def test_func(self):
         ''' checks if the user is the same as the creator '''
         obj = self.get_object()
@@ -65,11 +63,10 @@ class TributeDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     model = Tribute
     template_name = 'tribute_delete.html'
     fields = FIELDS
-    fields = FIELDS
     login_url = 'login'
-    success_url = reverse_lazy('tribute_lis')
+    #success_url = reverse_lazy('tribute_detail')
     def test_func(self):
         ''' checks if the user is the same as the creator '''
         obj = self.get_object()
-        return obj.creator == self.request.user
+        return obj.user == self.request.user
 

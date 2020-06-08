@@ -76,319 +76,72 @@
 
 {% block content %}
 <!-- Start Content -->
-<div class=" mb-5 column position-relative " style="height: 42rem;">
-    <!-- Banner -->
-    <div class="coverImg shadow-lg h-75"></div>
-    <!-- menu -->
-    <div class="column h-50 rounded-bottom shadow bg-light">
-        <div class="row h-50">
-						{% if memorial.imagen_de_perfil %}
-						<img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 position-absolute" 
-								 src="{{ memorial.imagen_de_perfil.url }}" />
-						{% else %}
-						<img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 position-absolute" 
-								 src="{% static "defaults/profile.jpg" '%}" />
+<div class=" py-4 article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" >
+		<hr/>
+		<div class="mb-3 col-12">
+				<div class="card ">
+						<div class="px-2 mx-1 dropdown position-absolute shadow rounded" 
+								 style="background: rgba(0,0,0,.3);">
+								<button class="btn dropdown-toggle" type="button" 
+																										id="dropdownMenuButton" data-toggle="dropdown">
+										<i class="fas fa-caret-down fa-2x text-white"
+											 style="opacity: .3"></i>
+								</button>
+								<div class="dropdown-menu bg-dark"
+										 style="opacity: .7;">
+										<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_detail' tribute.pk %}">Detalles</a>
+										<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_update' tribute.pk %}">Cambiar</a>
+										<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_delete' tribute.pk %}">Borrar</a>
+								</div>
+						</div>
+						{% if tribute.cover_image %}
+						<img class="card-img-top" src="{{ tribute.cover_image.url }}" alt="Card image cap">
 						{% endif %}
-            <div class="w-25 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
-            <hr />
-            <div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 ">
-								<h1 class="">{{ memorial.get_full_name }}</h1>
-            </div>
-            <hr />
-        </div>
-
-        <div class="row btn-group btn-group-lg 
-				col-xl-6 col-md-8 col-10 offset-1 offset-xl-3 offset-md-2 " role="group">
-						<a class="col-3 btn btn-light" id="informacionBtn"><i class="fas fa-book fa-2x"></i>
-								<p>Informacion</p>
-						</a>
-						<a class="col-2 btn btn-light" id="tributosBtn"><i class="fas fa-monument fa-2x"></i>
-								<p>Tributos</p>
-						</a>
-						<a class="col-2 btn btn-light" id="galeriaBtn"><i class="fas fa-portrait fa-2x"></i>
-								<p>Galeria</p>
-						</a>
-						<a class="col-2 btn btn-light" id="relacionesBtn"><i class="fas fa-users fa-2x"></i>
-								<p>Relaciones</p>
-						</a>
-				</div>
-    </div>
-</div>
-
-<div class="continaer" style="height: 2rem"></div>
-<div class="pt-5 contianer-fluid bg-dark" style="min-height: 50rem">
-    <div class="col-10 offset-1 shadow-lg bg-light rounded">
-
-        <!-- start of information content  -->
-        <div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
-            <div class="mb-5 column card-body text-center ">
-                <img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
-								<h3>{{ memorial.fecha_de_nacimiento }} - {{ memorial.fecha_de_muerte}}</h3>
-								<h3>{{ memorial.epitafo }}</h3>
-            </div>
-
-
-            <div class="my-5 container col-11">
-                <h1>Biografia</h1>
-                <hr />
+						<div class="card-body">
+								{% if tribute.quote %}
+								<blockquote class="blockquote mb-0">
+										<p><i>"{{ tribute.quote }}" </i></p>
+										<footer class="blockquote-footer">
+												Someone famous in <cite title="Source Title">Source Title </cite>
+										</footer>
+								</blockquote>
+								{% endif %}
+								{% if tribute.quote %}
+								<p class="card-text py-4">{{ tribute.writting }}</p>
+								{% endif %}
+								{% if tribute.anecdote %}
+								<p class="card-text py-4">{{ tribute.anecdote }}</p>
+								{% endif %}
+						</div>
+						<div class="card-footer text-muted">
 								<div class="row">
-										<div class="col-12 m-3 col-xl-1">
-												<i class="fas offset-1 fa-book fa-5x"></i>
+										<div class="col-4 text-center">
+												<p>{{ tribute.creation_time }}<br> 
+												<a>{{ tribute.comments_count }} comments</a> </p>
 										</div>
-										<div class="pl-3 text-center col-10 column">
-										<p>{{ memorial.biografia }}</p>
-										</div>
-								</div>
-            </div>
-            <div class="my-5 container col-11 ">
-                <h1>Sobre</h1>
-								<hr/>
-								<div class="row">
-										<div class="col-12 m-3 col-xl-1">
-												<i class="fas offset-1 fa-portrait fa-5x"></i>
-										</div>
-										<div class="col-10 column">
-												<table class="table table-hover bg-light ">
-														<tbody class="ml-5">
-																<tr>
-																		<td><b>Nombre:</b></td>
-																		<td>{{ memorial.get_full_name }} </td>
-																</tr>
-																<tr>
-																		<td><b>Fecha de Nacimiento:</b></td>
-																		<td>{{ memorial.fecha_de_nacimiento }}</td>
-																</tr>
-																<tr>
-																		<td><b>Fecha de Fallecimiento:</b></td>
-																		<td>{{ memorial.fecha_de_muerte }}</td>
-																</tr>
-																<tr>
-																		<td><b>Pais:</b></td>
-																		<td>
-																				{% for pais in memorial.pais %}
-																				{{ pais }}
-																				{% endfor %}
-																		</td>
-																</tr>
-														</tbody>
-												</table>
-										</div>
-								</div>
-                
-
-            </div>
-						<div class="my-5 container col-11">
-                <h1>Familia</h1>
-								<hr/>
-								<div class="row">
-										<div class="col-12 m-3 col-xl-1">
-												<i class="fas offset-1 fa-user-friends fa-5x"></i>
-										</div>
-										<div class="col-10 column">
-												<table class=" table table-hover bg-light ">
-														<tbody class="ml-5 ">
-																<tr>
-																		<td><b>Spouse:</b></td>
-																		<td><a href="#"> Bill Hughes</a> </td>
-																</tr>
-																<tr>
-																		<td><b>Parents:</b></td>
-																		<td><a href="#"> Sally Taylor</a>, <a href="#">Charles Taylor</a> </td>
-																</tr>
-																<tr>
-																		<td><b>Grand-Parents:</b></td>
-																		<td><a href="#"> Grand Sally Taylor</a>, <a href="#"> Grand Charles Taylor</a> </td>
-																</tr>
-														</tbody>
-												</table>
-										</div>
-								</div>
-            </div>
-						<div class="my-5 container col-11">
-								<h1>Opciones</h1>
-								<hr/>
-								<div class="row">
-										<div class="col-12 m-3 col-xl-1">
-												<i class="fas offset-1 fa-cogs fa-5x"></i>
-										</div>
-										<div class="col-6 column text-center">
-												<a class="btn btn-danger text-white"
-													 href="{% url 'memorial_delete' memorial.pk %}"
-													 type="button" >
-														<i class="fas fa-eraser fa-2x"></i>
-														Borrar
+										<div class="col-3 text-center pr-5">
+												<a href="#" style="color:  red;">
+														<i class="far fa-heart fa-2x"></i>
+														<p>{{ tribute.likes_count }}</p>
 												</a>
-												<a class="btn btn-info text-white"
-													 href="{% url 'memorial_update' memorial.pk %}"
-													 type="button" >
-														<i class="fas fa-user-edit fa-2x"></i>
-														Cambiar
-												</a>
+										</div>
+										<div href="#" class="col-5 row text-center">
+												{% if tribute.user.profile_image %}
+												<img class="mx-3 shadow rounded-circle"
+														 style="width: 3rem; height: 3rem;" 
+														 src="{{ tribute.user.profile_image.url }}" alt="coud not load"/>
+												{% else %}
+												<img class="mx-3 shadow rounded-circle"
+														 style="width: 3rem; height: 3rem;" 
+														 src="{% static 'defaults/profile.jpg' %}" alt="coud not load"/>
+												{% endif %}
+												<p><a href="#">{{ tribute.user }}</a> <br> sister</p>
 										</div>
 								</div>
 						</div>
-
-        </div>
-        <!-- End of information content -->
-
-        <!-- start of tributes content -->
-        <div class="p-2 row content" id="tributos" style="display: none;">
-
-						{% for tribute in	memorial.tributes.all %}			
-						<div class="mb-3 col-11 col-md-4">
-                <div class="card ">
-										{% if tribute.cover_image %}
-										<img class="card-img-top" src="{{ tribute.cover_image.url }}" alt="Card image cap">
-										{% endif %}
-
-                    <div class="card-body">
-												{% if tribute.quote %}
-                        <blockquote class="blockquote mb-0">
-														<p><i>"{{ tribute.quote }}" </i></p>
-														<footer class="blockquote-footer">
-																Someone famous in <cite title="Source Title">Source Title </cite>
-														</footer>
-                        </blockquote>
-												{% endif %}
-
-												{% if tribute.quote %}
-												<p class="card-text py-4">{{ tribute.writting }}</p>
-												{% endif %}
-
-												{% if tribute.anecdote %}
-												<p class="card-text py-4">{{ tribute.anecdote }}</p>
-												{% endif %}
-                    </div>
-
-                    <div class="card-footer row text-muted">
-                        <div class="col-4 ">
-														<p>{{ tribute.creation_time }}<br> 
-														<a>{{ tribute.comments_count }} comments</a> </p>
-                        </div>
-                        <div class="col-3 text-center pr-5">
-                            <a href="#" style="color:  red;">
-                                <i class="far fa-heart fa-2x"></i>
-																<p>{{ tribute.likes_count }}</p>
-                            </a>
-                        </div>
-                        <div href="#" class="col-5 row">
-														{% if tribute.user.profile_image %}
-														<img class="mx-3 shadow rounded-circle"
-																 style="width: 3rem; height: 3rem;" 
-																 src="{{ tribute.user.profile_image.url }}" alt="coud not load"/>
-														{% else %}
-														<img class="mx-3 shadow rounded-circle"
-																 style="width: 3rem; height: 3rem;" 
-																 src="{% static 'defaults/profile.jpg' %}" alt="coud not load"/>
-														{% endif %}
-														<p><a href="#">{{ tribute.user }}</a> <br> sister</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-						{% endfor %}
-        </div>
-        <!-- end of tributes content -->
-
-        <!-- start of gallery content -->
-        <div class="pb-5 continer col-12 content" id="galeria" style="display: none">
-            <!-- Grid row -->
-            <div class="row">
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-            <!-- Grid row -->
-            <div class="gallery" id="gallery">
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                </div>
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 2">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-                <!-- Grid column -->
-                <div class="mb-3 pics animation all 1">
-                    <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg" alt="Card image cap">
-                </div>
-                <!-- Grid column -->
-            </div>
-            <!-- Grid row -->
-        </div>
-        <!-- End of gallery content -->
-
-        <!-- start of relationships content -->
-        <div class="continer col-12 content" id="relaciones" style="display: none">
-            <div class="mb-5 container col-11">
-                <h1>Amigos</h1>
-                <hr />
-                <div class="row">
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-                </div>
-                <h1>Padres</h1>
-                <hr />
-                <div class="row">
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-        <!-- end of relationships content -->
-        {% endblock content %}
+				</div>
+		</div>
+		<hr/>
+</div>
+<!-- end of tributes content -->
+{% endblock content %}

@@ -9,18 +9,18 @@
 <div class=" article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" 
 		style="height: 30rem;" >
 
-		<h2>Borrar {{object.get_full_name }}</h2>
+		<h2>Borrar Tributo</h2>
 		<hr/>
-		<h3> ¿Estas Seguro que quieres borran este memorial?<h3>
+		<h3> ¿Estas Seguro que quieres borran este tributo?<h3>
 		<form enctype="multipart/form-data"  method="POST">
 		{% csrf_token %}
 		{{ form|crispy }} 
-		<button class="btn btn-danger ml-2" type="submit">
+		<button class="pt-5 mt-5 btn btn-danger ml-2" type="submit">
 				<i class="far fa-minus-square fa-2x"></i>
 				Borrar
 		</button>
-		<a class="btn btn-info ml-2 text-white" 
-			 href="{% url 'memorial_detail' memorial.pk %}"
+		<a class="pt-5 mt-5 btn btn-info ml-2 text-white" 
+			 href="{% url 'memorial_detail' tribute.memorial.pk %}"
 				type="button">
 
 

@@ -1,5 +1,5 @@
 from django.db import models
-from django.urls import include 
+from django.urls import reverse, include 
 from django.contrib.auth import get_user_model
 from memorials.models import Memorial
 # Create your models here.
@@ -39,7 +39,7 @@ class Tribute(models.Model):
         return string
 
     def get_absolute_url(self):
-        return reverse('tribute_detail', args=[str(self.id)])
+        return reverse('tribute_detail', args=[str(self.pk)])
 
 class Comment(models.Model):
     # Foregn key for the tribute
