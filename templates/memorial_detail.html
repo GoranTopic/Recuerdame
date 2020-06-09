@@ -235,6 +235,7 @@
 						{% for tribute in	memorial.tributes.all %}			
 						<div class="mb-3 col-11 col-md-4">
 								<div class="card ">
+										{% if tribute.user == user %}
 										<div class="px-2 mx-1 dropdown position-absolute shadow rounded" 
 												 style="background: rgba(0,0,0,.6);">
 												<button class="btn dropdown-toggle" type="button" 
@@ -249,6 +250,7 @@
 														<a class="dropdown-item text-light bg-dark" href="{% url 'tribute_delete' tribute.pk %}">Borrar</a>
 												</div>
 										</div>
+										{% endif %}
 										{% if tribute.cover_image %}
 										<a href="{% url 'tribute_detail' tribute.pk %}">
 												<img class="card-img-top" src="{{ tribute.cover_image.url }}" alt="Card image cap">
@@ -328,11 +330,27 @@
 						<!-- Grid row -->
 						<div class="gallery" id="gallery">
 
+
+								{% for image in	memorial.images.all %}			
+								{% if image.picture %}
+								<!-- Grid column -->
+								<div class="mb-3 pics animation all {% cycle '1' '2' %}">
+										<a href="{{ image.picture.url }}" data-toggle="lightbox" data-gallery="my-gallery">
+												<img class="img-fluid rounded shadow-sm" src="{{ image.picture.url }}" alt="Card image cap">
+										</a>
+								</div>
+								<!-- Grid column -->
+								{% endif %}
+								{% endfor %}
+
+
 								{% for tribute in	memorial.tributes.all %}			
 								{% if tribute.cover_image %}
 								<!-- Grid column -->
 								<div class="mb-3 pics animation all {% cycle '1' '2' %}">
-										<img class="img-fluid" src="{{ tribute.cover_image.url }}" alt="Card image cap">
+										<a href="{{ tribute.cover_image.url }}" data-toggle="lightbox" data-gallery="my-gallery">
+												<img class="img-fluid rounded shadow-sm" src="{{ tribute.cover_image.url }}" alt="Card image cap">
+										</a>
 								</div>
 								<!-- Grid column -->
 								{% endif %}
@@ -341,7 +359,7 @@
 						</div>
 						<!-- Grid row -->
 						<div class="text-center mb-3 mt-5 ">
-								<a href="#">
+								<a href="{% url 'image_new' %}">
 										<img class="img-fluid" 
 												 style="heigh: 8rem; width: 8rem; opacity:.4"
 												 src="{% static 'img/add_card.jpg' %}">
@@ -349,58 +367,61 @@
 
 						</div>
 				</div>
-        <!-- End of gallery content -->
+				<!-- End of gallery content -->
 
-        <!-- start of relationships content -->
-        <div class="continer col-12 content" id="relaciones" style="display: none">
-            <div class="mb-5 container col-11">
-                <h1>Amigos</h1>
-                <hr />
-                <div class="row">
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
+				<!-- start of relationships content -->
+				<div class="continer col-12 content" id="relaciones" style="display: none">
+						<div class="mb-5 container col-11">
+								<h1>Amigos</h1>
+								<hr />
+								<div class="row">
+										<div class="p-3 text-center" href="#">
+												<a href="#">
+														<img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+														<h3>Linda Estefay Wong</h3>
+														<h4 class="muted text-dark">spouse</h4>
+												</a>
+										</div>
 
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-                </div>
-                <h1>Padres</h1>
-                <hr />
-                <div class="row">
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
+										<div class="p-3 text-center" href="#">
+												<a href="#">
+														<img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+														<h3>Linda Estefay Wong</h3>
+														<h4 class="muted text-dark">spouse</h4>
+												</a>
+										</div>
+								</div>
+								<h1>Padres</h1>
+								<hr />
+								<div class="row">
+										<div class="p-3 text-center" href="#">
+												<a href="#">
+														<img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+														<h3>Linda Estefay Wong</h3>
+														<h4 class="muted text-dark">spouse</h4>
+												</a>
+										</div>
 
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
+										<div class="p-3 text-center" href="#">
+												<a href="#">
+														<img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+														<h3>Linda Estefay Wong</h3>
+														<h4 class="muted text-dark">spouse</h4>
+												</a>
+										</div>
 
-                    <div class="p-3 text-center" href="#">
-                        <a href="#">
-                            <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                            <h3>Linda Estefay Wong</h3>
-                            <h4 class="muted text-dark">spouse</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end of relationships content -->
-        {% endblock content %}
+										<div class="p-3 text-center" href="#">
+												<a href="#">
+														<img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
+														<h3>Linda Estefay Wong</h3>
+														<h4 class="muted text-dark">spouse</h4>
+												</a>
+										</div>
+								</div>
+						</div>
+				</div>
+				<!-- end of relationships content -->
+		</div>
+</div>
+{% endblock content %}
+

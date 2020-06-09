@@ -30,13 +30,16 @@ class Memorial(models.Model):
     #city = to be implemente
 
     # multi Value for timeline 
-    #linea_de_timpo = -to be implemented-
+    # linea_de_timpo = -to be implemented-
 
 
     # Images 
     imagen_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )
     #imagen_de_perfil = models.ImageField(null=True, blank=True, upload_to='profiles/',  default='defaults/profile.jpg' )
     imagen_de_perfil = ResizedImageField(null=True, blank=True, size=[1000, 1000], quality=100, crop=['middle', 'center'], upload_to='profiles/')
+
+    # creation time
+    creation_time = models.DateTimeField(auto_now_add=True, blank=True)
 
     # user foreign keys 
     creado_por = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
@@ -59,3 +62,29 @@ class Memorial(models.Model):
 
     def get_absolute_url(self):
         return reverse('memorial_detail', args=[str(self.id)])
+
+
+class Image(models.Model):
+
+    # memorial to which the picture is related to 
+    memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='images')
+
+    # picture field
+    picture = models.ImageField(null=True, blank=False, upload_to='images/' )
+
+    # user who uploaded the picture
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+
+    #short descrition of the image
+    description = models.TextField(max_length=5000, blank=True)
+
+    # creation time
+    creation_time = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.descrition
+
+
+    def get_absolute_url(self):
+        return reverse('memorial_detail', kwargs={'pk': self.memorial.pk})
+

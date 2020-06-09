@@ -8,13 +8,15 @@ from .forms import TributeForm
 from memorials.models import Memorial
 from django.urls import reverse, reverse_lazy 
 from django.http import HttpResponseRedirect
+from django.views.decorators.http import require_http_methods
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # requiered field attibutes
-FIELDS = ('quote', 'quote_author', 'anecdote', 'writting', 'cover_image')
+FIELDS = ('cover_image', 'quote', 'quote_author', 'anecdote', 'writting',)
 
-
-
+@login_required(login_url='login')
+@require_http_methods(["GET", "POST"])
 def create_view(request, memorial_pk):
     context = {} 
     if request.method == 'POST':

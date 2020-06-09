@@ -10,9 +10,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.css">
     <!-- Load favicon -->
     <!-- Font Awesome icons -->
-    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
 		{% block title %}
     <title>
         Memorial
@@ -142,358 +142,12 @@
     </style>
 		{% endblock css_style %}
 
-		{% block content %}
     <!-- Start Content -->
-    <div class=" mb-5 column position-relative " style="height: 42rem;">
+		{% block content %}
 
-        <!-- Banner -->
-        <div class="coverImg h-75"></div>
+		{% endblock content %}
+    <!-- End Content -->
 
-        <!-- menu -->
-        <div class="column h-50 rounded-bottom shadow bg-light">
-            <div class="row h-50">
-                <img class="profileImg rounded-circle shadow col-9 col-sm-7 col-md-5  col-xl-3 offset-2 offset-sm-3 offset-lg-1 offset-xl-2 
-										position-absolute" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                <div class="w-25 h-50 offset-3 offset-lg-4 offset-xl-5"></div>
-                <hr />
-                <div class="h-50 col-7 col-lg-5 col-xl-5 offset-3 offset-lg-5 offset-xl-5 ">
-                    <h1 class="">Samantha Wong Choi Nuddle</h1>
-                </div>
-                <hr />
-            </div>
-
-            <div class="row btn-group btn-group-lg 
-								col-xl-5 col-md-8 col-10 offset-1 offset-xl-3 offset-md-2 " role="group">
-                <a class="col-3 btn btn-light" id="informacionBtn"><i class="fas fa-book fa-2x"></i>
-                    <p>Informacion</p>
-                </a>
-                <a class="col-3 btn btn-light" id="tributosBtn"><i class="fas fa-monument fa-2x"></i>
-                    <p>Tributos</p>
-                </a>
-                <a class="col-3 btn btn-light" id="galeriaBtn"><i class="fas fa-portrait fa-2x"></i>
-                    <p>Galeria</p>
-                </a>
-                <a class="col-3 btn btn-light" id="relacionesBtn"><i class="fas fa-users fa-2x"></i>
-                    <p>Relaciones</p>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <div class="continaer" style="height: 2rem"></div>
-    <div class="pt-5 contianer-fluid bg-dark" style="min-height: 50rem">
-        <div class="col-10 offset-1 shadow-lg bg-light rounded">
-
-            <!-- start of information content  -->
-            <div class=" pb-5 container-fluid toggable" id="informacion" style="display: block;">
-                <div class="mb-5 column card-body text-center ">
-                    <img class="col-10 col-md-3" src="https://www.mykeeper.com/img/profile-icon/Floral-&-Nature/floral2.png">
-                    <h3>Septimbre 12th, 1970 - Noviembre 1st, 2013</h3>
-                    <h3>"En nuestro pensamientos y corazones, simpre..."</h3>
-                </div>
-
-
-                <div class="my-5 container col-11">
-                    <h1>Biographia</h1>
-                    <hr />
-                    <div class="pl-3">
-                        <p>Linda passed away peacefully after a 3 year long battle with breast cancer on November 1st, 2013. She was a devoted mother to Sara, and Jeffrey and wife of Bill Hughes. Linda's life was dedicated to her greatest passion: caring
-                            for her patients. After completing her Nursing degree, she happily worked long hours at Chicago General up until two years before her passing. She would always come home and tell us all the amazing stories about her patients
-                            life. She loved playing outside with her children, watching Sara play soccer, and relaxing at home with her crochet. The family would like to thank the staff and doctors at Chicago general for taking such great care of her
-                            during her time of need.</p>
-                    </div>
-                </div>
-                <div class="my-5 container col-11 ">
-                    <h1>Sobre</h1>
-                    <table class="table table-hover bg-light ">
-                        <tbody class="ml-5">
-                            <tr>
-                                <td><b>Nombre:</b></td>
-                                <td>Samantha wong wu nuudle</td>
-                            </tr>
-                            <tr>
-                                <td><b>Fecha de Nacimiento:</b></td>
-                                <td>Not too long ago</td>
-                            </tr>
-                            <tr>
-                                <td><b>Fecha de Fallecimiento:</b></td>
-                                <td>Too soon</td>
-                            </tr>
-                            <tr>
-                                <td><b>Pais:</b></td>
-                                <td>United States, China</td>
-                            </tr>
-                            <tr>
-                                <td><b>Ciudad:</b></td>
-                                <td>Phonix</td>
-                            </tr>
-                        </tbody>
-                    </table>
-
-                </div>
-                <div class="my-5 container col-11">
-                    <h1>Linea de Tiempo</h1>
-                    <table class=" table table-hover bg-light ">
-                        <tbody class="ml-5 ">
-                            <tr>
-                                <td><b>1982 - 1988</b></td>
-                                <td>Chicago High, High School, discoverd weed</td>
-                            </tr>
-                            <tr>
-                                <td><b>1992</b></td>
-                                <td>Had a baby!</td>
-                            </tr>
-                            <tr>
-                                <td><b>1999</b></td>
-                                <td>Got a boy friend</td>
-                            </tr>
-                            <tr>
-                                <td><b>2001</b></td>
-                                <td>Got married</td>
-                            </tr>
-                            <tr>
-                                <td><b>2008</b></td>
-                                <td>Did something interesting</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-                <div class="my-5 container col-11">
-                    <h1>Familia</h1>
-
-                    <table class=" table table-hover bg-light ">
-                        <tbody class="ml-5 ">
-                            <tr>
-                                <td><b>Spouse:</b></td>
-                                <td><a href="#"> Bill Hughes</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Parents:</b></td>
-                                <td><a href="#"> Sally Taylor</a>, <a href="#">Charles Taylor</a> </td>
-                            </tr>
-                            <tr>
-                                <td><b>Grand-Parents:</b></td>
-                                <td><a href="#"> Grand Sally Taylor</a>, <a href="#"> Grand Charles Taylor</a> </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <!-- End of information content -->
-
-
-            <!-- start of tributes content -->
-            <div class="p-2 row content" id="tributos" style="display: none;">
-
-                <div class="mb-3 col-11 col-md-4">
-                    <div class="card">
-                        <img class="card-img-top" src="https://w.wallhaven.cc/full/96/wallhaven-967rgd.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
-                                <p><i>"it nice to be importat, but is is more important to be nice" </i></p>
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                        Title</cite></footer>
-                                <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </blockquote>
-                        </div>
-
-                        <div class="card-footer row  align-items-center">
-                            <div class="col-4 ">
-                                <p>1 days ago<br> <a> 5 comment </a> </p>
-                            </div>
-                            <div class="col-3 text-center pr-5">
-                                <a href="#" style="color:  red;">
-                                    <i class="far fa-heart fa-2x"></i>
-                                    <p>12</p>
-                                </a>
-                            </div>
-                            <div href="#" class="col-5 row">
-                                <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-															
-															<p><a href="#">Jeniffer Puff</a> <br> sister</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="mb-3 col-11 col-md-4">
-                    <div class="card ">
-                        <img class="card-img-top" src="https://w.wallhaven.cc/full/5w/wallhaven-5w82r1.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
-                                <p><i>"It is importat to be nice, but it is more nice to be important" </i></p>
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                        Title</cite></footer>
-                                <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </blockquote>
-                        </div>
-
-                        <div class="card-footer row text-muted">
-                            <div class="col-4 ">
-                                <p>1 days ago<br> <a> 5 comment </a> </p>
-                            </div>
-                            <div class="col-3 text-center pr-5">
-                                <a href="#" style="color:  red;">
-                                    <i class="far fa-heart fa-2x"></i>
-                                    <p>12</p>
-                                </a>
-                            </div>
-                            <div href="#" class="col-5 row">
-                                <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-															
-															<p><a href="#">Jeniffer Puff</a> <br> sister</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-								<div class="mb-3 col-11 col-md-4">
-                    <div class="card ">
-                        <img class="card-img-top" src="https://w.wallhaven.cc/full/5w/wallhaven-5w82r1.jpg" alt="Card image cap">
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
-                                <p><i>"It is importat to be nice, but it is more nice to be important" </i></p>
-                                <footer class="blockquote-footer">Someone famous in <cite title="Source Title">Source
-                                        Title</cite></footer>
-                                <p class="card-text py-4">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                            </blockquote>
-                        </div>
-
-                        <div class="card-footer row text-muted">
-                            <div class="col-4 ">
-                                <p>1 days ago<br> <a> 5 comment </a> </p>
-                            </div>
-                            <div class="col-3 text-center pr-5">
-                                <a href="#" style="color: red;">
-                                    <i class="far fa-heart fa-2x"></i>
-                                    <p>12</p>
-                                </a>
-                            </div>
-                            <div href="#" class="col-5 row">
-                                <img class="mx-3 shadow rounded-circle" style="width: 3rem; height: 3rem;" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-															<p><a href="#">Jeniffer Puff</a> <br> sister</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <!-- end of tributes content -->
-
-            <!-- start of gallery content -->
-            <div class="pb-5 continer col-12 content" id="galeria" style="display: none">
-
-                <!-- Grid row -->
-                <div class="row">
-                    <!-- Grid column -->
-                </div>
-                <!-- Grid row -->
-
-                <!-- Grid row -->
-                <div class="gallery" id="gallery">
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 2">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(73).jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 1">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                    </div>
-                    <div class="mb-3 pics animation all 1">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain1.jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 1">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain2.jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 2">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(35).jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 2">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/4-col/img%20(18).jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                    <!-- Grid column -->
-                    <div class="mb-3 pics animation all 1">
-                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Vertical/mountain3.jpg" alt="Card image cap">
-                    </div>
-                    <!-- Grid column -->
-
-                </div>
-                <!-- Grid row -->
-            </div>
-            <!-- End of gallery content -->
-
-
-            <!-- start of relationships content -->
-            <div class="continer col-12 content" id="relaciones" style="display: none">
-                <div class="mb-5 container col-11">
-                    <h1>Amigos</h1>
-                    <hr />
-                    <div class="row">
-                        <div class="p-3 text-center" href="#">
-                            <a href="#">
-                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                                <h3>Linda Estefay Wong</h3>
-                                <h4 class="muted text-dark">spouse</h4>
-                            </a>
-                        </div>
-
-                        <div class="p-3 text-center" href="#">
-                            <a href="#">
-                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                                <h3>Linda Estefay Wong</h3>
-                                <h4 class="muted text-dark">spouse</h4>
-                            </a>
-                        </div>
-                    </div>
-                    <h1>Padres</h1>
-                    <hr />
-                    <div class="row">
-                        <div class="p-3 text-center" href="#">
-                            <a href="#">
-                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                                <h3>Linda Estefay Wong</h3>
-                                <h4 class="muted text-dark">spouse</h4>
-                            </a>
-                        </div>
-
-                        <div class="p-3 text-center" href="#">
-                            <a href="#">
-                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                                <h3>Linda Estefay Wong</h3>
-                                <h4 class="muted text-dark">spouse</h4>
-                            </a>
-                        </div>
-
-                        <div class="p-3 text-center" href="#">
-                            <a href="#">
-                                <img class="rounded-circle shadow" style="width: 9rem" src="https://www.guttersdirectmn.com/wp-content/uploads/2018/07/student-profile-gabriela-mills-college.jpg" />
-                                <h3>Linda Estefay Wong</h3>
-                                <h4 class="muted text-dark">spouse</h4>
-                            </a>
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-            <!-- end of relationships content -->
-						{% endblock content %}
-        </div>
-    </div>
     <!-- Footer-->
     <footer class="footer bg-dark  text-center">
         <div class="bg-dark text-white">Copyright © Recuerdame 2020</div>
@@ -508,16 +162,14 @@
         </a>
     </footer>
     <!-- Bootstrap core JS-->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous">
-    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"> </script>
     <!-- Third party plugin JS-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">
-    </script>
+    <script src="https://use.fontawesome.com/releases/v5.12.1/js/all.js" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js" integrity="sha256-jGAkJO3hvqIDc4nIY1sfh/FPbV+UK+1N+xJJg6zzr7A=" crossorigin="anonymous"></script>
     <script>
+
         document.getElementById("informacionBtn").onclick = function() {
             $("informacionBtn").addClass("bg-dark");
             $("tributosBtn").removeClass("active");
@@ -549,6 +201,7 @@
             $('#relaciones').show(500)
             $('#tributos').hide()
         };
+
         // Get all buttons with class="btn" inside the container
         var btns = document.getElementsByClassName("btn");
 
@@ -561,11 +214,23 @@
                 if (current.length > 0) {
                     current[0].className = current[0].className.replace(" active", "");
                 }
-
                 // Add the active class to the current/clicked button
                 this.className += " active";
             });
         }
+
+				$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+						event.preventDefault();
+						$(this).ekkoLightbox();
+				});
+
+				$(this).ekkolightbox({
+		  		loadingMessage: "Loading…",
+		  		showArrows: true,
+		  		leftArrow: "<<<",
+		  		rightArrow: ">>>"
+				});
+
     </script>
 
 

@@ -2,10 +2,11 @@ from django.shortcuts import render
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth import get_user_model
 from django.views.generic import ListView, DetailView
-from django.views.generic.edit import UpdateView, DeleteView, CreateView
-from .models import Memorial
-from django.urls import reverse_lazy
+from django.views.generic.edit import UpdateView, DeleteView, CreateView, FormView
+from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect
+from .models import Memorial
+from .forms import ImageForm
 # Create your views here.
 
 # requiered field attibutes
@@ -20,6 +21,17 @@ class MemorialListView(ListView):
 class MemorialDetailView(DetailView):
     model = Memorial
     template_name = 'memorial_detail.html'
+    
+
+class ImageFormView(FormView):
+    template_name = 'image_new.html'
+    form_class = ImageForm
+    success_url = '/'
+    def form_valid(self, form):
+        # This method is called when valid form data has been POSTed.
+        # It should return an HttpResponse.
+        return super().form_valid(form)
+
 
 class MemorialUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Memorial
