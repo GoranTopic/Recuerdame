@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Memorial
+from .models import Memorial, Image
 from eulogies.models import Eulogy
 from tributes.models import Tribute
 
@@ -15,3 +15,4 @@ class adminMemorial(admin.ModelAdmin):
     inline = [ EulogyInline, ]
 
 admin.site.register(Memorial, adminMemorial)
+admin.site.register(Image)

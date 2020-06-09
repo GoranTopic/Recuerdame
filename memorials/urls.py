@@ -3,14 +3,12 @@ from  .views import ( MemorialListView, MemorialDetailView,
                       MemorialCreateView, MemorialUpdateView,
                       MemorialDeleteView, ImageFormView )
 
-
-
 urlpatterns = [ 
         path('list', MemorialListView.as_view(), name='memorial_list'),
         path('<int:pk>/detail', MemorialDetailView.as_view(), name='memorial_detail'),
         path('<int:pk>/update', MemorialUpdateView.as_view(), name='memorial_update'),
         path('<int:pk>/delete', MemorialDeleteView.as_view(), name='memorial_delete'),
         path('new', MemorialCreateView.as_view(), name='memorial_new'),
-        path('image_new', ImageFormView.as_view(), name='image_new'),
+        path('<int:memorial_pk>/image_new', ImageFormView, name='image_new'),
         ]
 

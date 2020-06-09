@@ -330,7 +330,6 @@
 						<!-- Grid row -->
 						<div class="gallery" id="gallery">
 
-
 								{% for image in	memorial.images.all %}			
 								{% if image.picture %}
 								<!-- Grid column -->
@@ -359,7 +358,7 @@
 						</div>
 						<!-- Grid row -->
 						<div class="text-center mb-3 mt-5 ">
-								<a href="{% url 'image_new' %}">
+								<a href="{% url 'image_new' memorial.pk %}">
 										<img class="img-fluid" 
 												 style="heigh: 8rem; width: 8rem; opacity:.4"
 												 src="{% static 'img/add_card.jpg' %}">

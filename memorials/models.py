@@ -70,20 +70,19 @@ class Image(models.Model):
     memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='images')
 
     # picture field
-    picture = models.ImageField(null=True, blank=False, upload_to='images/' )
+    picture = models.ImageField(null=True, blank=False, upload_to='images/')
 
     # user who uploaded the picture
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
 
-    #short descrition of the image
+    #short description of the image
     description = models.TextField(max_length=5000, blank=True)
 
     # creation time
     creation_time = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
-        return self.descrition
-
+        return self.description 
 
     def get_absolute_url(self):
         return reverse('memorial_detail', kwargs={'pk': self.memorial.pk})
