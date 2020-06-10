@@ -11,7 +11,9 @@ Images upload
 		<hr/>
 		<form enctype="multipart/form-data" method="POST">
 				{% csrf_token %}
-				{{ form|crispy }} 
+				{% for form in formset %}
+					{{ form|crispy }} 
+				{% endfor %}
 				<button class="btn btn-primary ml-2" type="submit">
 						<i class="fas fa-check-circle fa-2x"></i>
 						Submit

@@ -64,18 +64,45 @@ class Memorial(models.Model):
         return reverse('memorial_detail', args=[str(self.id)])
 
 
+class LifeEvent(models.Model):
+
+    # memorial to which the picture is related to 
+    memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='life_events')
+
+    # picture field
+    picture = models.ImageField(null=True, blank=True, upload_to='images/')
+
+    # user who uploaded the picture
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
+
+    # Event date
+    event_date = models.DateTimeField( blank=True)
+
+    #short description of the 
+    description = models.CharField(max_length=255, blank=True)
+
+    # creation time
+    creation_time = models.DateTimeField(auto_now_add=True, blank=True)
+
+    def __str__(self):
+        return self.description 
+
+    def get_absolute_url(self):
+        return reverse('memorial_detail', kwargs={'pk': self.memorial.pk})
+
+
 class Image(models.Model):
 
     # memorial to which the picture is related to 
     memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='images')
 
     # picture field
-    picture = models.ImageField(null=True, blank=False, upload_to='images/')
+    picture = models.ImageField(null=True, blank=True, upload_to='images/')
 
     # user who uploaded the picture
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
 
-    #short description of the image
+    #short description of the 
     description = models.TextField(max_length=5000, blank=True)
 
     # creation time
