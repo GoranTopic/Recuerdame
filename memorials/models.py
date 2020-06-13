@@ -45,8 +45,8 @@ class Memorial(models.Model):
     manager = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='manager')
 
     class Meta:
-        app_label = 'myapp'
         permissions = (
+                ('can add tribute' , 'can_add_tribute')
                 ('can_add_content', 'can add content'),
                 ('can_view_content', 'can view content'),
                 )
