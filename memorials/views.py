@@ -1,14 +1,18 @@
 from django.shortcuts import render
 from django.forms import formset_factory
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
-from django.contrib.auth import get_user_model
+from django.contrib.auth import get_user_model 
+from django.contrib.auth.models import Group, Permission
+from django.contrib.contenttypes.models import ContentType
+from django.views import View
 from django.views.generic import ListView, DetailView
 from django.views.generic.edit import UpdateView, DeleteView, CreateView, FormView
 from django.urls import reverse_lazy, reverse
+from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
 from django.contrib.auth.decorators import login_required
-from .models import Memorial
+from .models import Memorial, Image, LifeEvent
 from .forms import ImageForm
 # Create your views here.
 
@@ -41,6 +45,7 @@ class MemorialDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
     template_name = 'memorial_delete.html'
     fields = FIELDS
     success_url = reverse_lazy('memorial_list')
+
     def test_func(self):
         ''' checks if the user is the same as the creator '''
         obj = self.get_object()
@@ -51,11 +56,18 @@ class MemorialCreateView(LoginRequiredMixin, CreateView):
     template_name = 'memorial_new.html'
     fields = FIELDS
     login_url = 'login'
-    
+    print("GOT REQUEST")
+    permission = Permission.objects.create(codename='can_publish', 
+            name='Can Publish Posts', 
+            content_type=Memorial)
+
     def form_valid(self, form):
         ''' Set the user wich send the request as the form 'creator' '''
+        print("form is valid")
+
         form.instance.creado_por = self.request.user
         form.instance.manager = self.request.user
+
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -99,3 +111,32 @@ def lifeEvenFormView(request, memorial_pk):
         formset = LifeEventFormSet()
         context['formset'] = formset
         return render(request, 'image_new.html', context)
+
+
+
+class UploadImageView(View):
+    def get(self, request, memorial_pk):
+        memorial_instace = Memorial.objects.get(pk=memorial_pk)
+        print(memorial_instace)
+        print("GOT GET REQUEST")
+        image_list = Image.objects.filter(memorial__pk=memorial_pk)
+        return render(self.request, 'image_upload.html', {'images': image_list, 'memorial_pk': memorial_pk})
+
+    def post(self, request, memorial_pk):
+        memorial = Memorial.objects.get(pk=memorial_pk)
+        print("GOT POST REQUEST")
+        print(request.POST)
+        form = ImageForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            print("POST REQUEST was valied")
+            form.instance.memorial = memorial 
+            form.instance.user = request.user 
+            image = form.save()
+            data = {'is_valid': True, 'name': image.file.name, 'url': image.file.url, }
+        else:
+            print("POST REQUEST not was valied")
+            image = form.save()
+            data = {'is_valid': False}
+        return JsonResponse(data)
+
+

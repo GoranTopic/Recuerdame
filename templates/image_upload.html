@@ -1,0 +1,108 @@
+<!-- A template for uploading multiple images -->
+{% extends 'app_base.html' %}
+{% load crispy_forms_tags %}
+{% load static  %}
+
+{% block title %}
+{% endblock title %}
+{% block content %}
+	
+<div class=" py-5 article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" >
+		<div class="pull-right col-2">
+				<a class="btn btn-info col-10 ml-2 text-white align-text-middle" 
+					 href="{% url 'memorial_detail' memorial_pk %}"
+					 type="button">
+						<div class="col-12">
+								<i class="fas fa-arrow-circle-left fa-2x"></i>
+						</div>
+						Memorial
+				</a>
+		</div>
+		<hr/>
+
+		<div class="well text-muted text-center" style="padding-top: 4rem; padding-bottom: 4rem;">
+				<i class=" text-muted fas fa-cloud-upload-alt fa-6x"></i>
+				<h3>Drop Photos Here to Upload</h3>
+		</div>
+
+		<div class="container col-12 col-md-9">
+				{# 3. TABLE TO DISPLAY THE UPLOADED PHOTOS #}
+				<table id="gallery" class="table table-bordered">
+						<thead>
+								<tr>
+										<th>Images</th>
+								</tr>
+						</thead>
+						<tbody>
+								{% for image in images %}
+								<tr>
+										<td> 
+												<div class="d-flex justify-content-start">
+														<a href="{{ image.file.url }}"><img class="mx-5 shadow" width="100px" src="{{ image.file.url }}"/> {{ image.file.name }}</a>
+												</div>
+										</td>
+								</tr>
+								{% endfor %}
+						</tbody>
+				</table>
+		</div>
+
+		{# 2. FILE INPUT TO BE USED BY THE PLUG-IN #}
+		<input id="fileupload" type="file" name="file" multiple
+																			 style="display: none;"
+																			 data-url="{% url 'image_upload' memorial_pk %}"
+																			 data-form-data='{"csrfmiddlewaretoken": "{{ csrf_token }}"}'>
+
+
+
+		{# 1. BUTTON TO TRIGGER THE ACTION #}
+		<button type="button" class="btn btn-primary js-upload-photos">
+				<span class="glyphicon glyphicon-cloud-upload"></span> Upload photos
+		</button>
+		<a class="btn btn-info ml-2 text-white" 
+			 href="{% url 'memorial_detail' memorial_pk %}"
+			 type="button">
+				<i class="fas fa-arrow-circle-left fa-2x"></i>
+				Atras
+		</a>
+</div>
+
+{% endblock content %}
+
+
+
+{% block javascript %}
+{# JQUERY FILE UPLOAD SCRIPTS #}
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="{% static 'js/vendor/jquery.ui.widget.js' %}"></script>
+<script src="{% static 'js/jquery.iframe-transport.js' %}"></script>
+<script src="{% static 'js/jquery.fileupload.js' %}"></script>
+<script>
+
+		$(function () {
+				/* 1. OPEN THE FILE EXPLORER WINDOW */
+				$(".js-upload-photos").click(function () {
+						$("#fileupload").click();
+				});
+
+				/* 2. INITIALIZE THE FILE UPLOAD COMPONENT */
+				$("#fileupload").fileupload({
+						dataType: 'json',
+						done: function (e, data) {  /* 3. PROCESS THE RESPONSE FROM THE SERVER */
+								if (data.result.is_valid) {
+										$("#gallery tbody").prepend(
+												"<tr><td><div class='d-flex justify-content-start'> <a href='" +  data.result.url + "'><img class='mx-5 shadow' width='100px' src='" + data.result.url+ "'/> '" + data.result.name + "'</a> <i class='mx-4 text-success far fa-check-circle fa-3x'></i> </div></td></tr>"
+										)
+								}
+						}
+				});
+		});
+
+</script>
+
+{% endblock javascript %}
+
+
+
+

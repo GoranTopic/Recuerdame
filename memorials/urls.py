@@ -1,7 +1,5 @@
 from django.urls import path, include
-from  .views import ( MemorialListView, MemorialDetailView,
-                      MemorialCreateView, MemorialUpdateView,
-                      MemorialDeleteView )
+from .views import *
 
 urlpatterns = [ 
         path('list', MemorialListView.as_view(), name='memorial_list'),
@@ -9,5 +7,6 @@ urlpatterns = [
         path('<int:pk>/update', MemorialUpdateView.as_view(), name='memorial_update'),
         path('<int:pk>/delete', MemorialDeleteView.as_view(), name='memorial_delete'),
         path('new', MemorialCreateView.as_view(), name='memorial_new'),
+        path('<int:memorial_pk>/images_upload', UploadImageView.as_view(), name='image_upload'),
         ]
 

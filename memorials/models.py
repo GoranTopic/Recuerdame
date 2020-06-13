@@ -32,7 +32,6 @@ class Memorial(models.Model):
     # multi Value for timeline 
     # linea_de_timpo = -to be implemented-
 
-
     # Images 
     imagen_de_fondo = models.ImageField(null=True, blank=True, upload_to='covers/', default='defaults/cover.jpg' )
     #imagen_de_perfil = models.ImageField(null=True, blank=True, upload_to='profiles/',  default='defaults/profile.jpg' )
@@ -45,6 +44,12 @@ class Memorial(models.Model):
     creado_por = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
     manager = models.ForeignKey(get_user_model(), on_delete=models.CASCADE, related_name='manager')
 
+    class Meta:
+        app_label = 'myapp'
+        permissions = (
+                ('can_add_content', 'can add content'),
+                ('can_view_content', 'can view content'),
+                )
 
     def get_full_name(self):
         ''' Get the full name by checking and using the names which have'''
@@ -97,7 +102,7 @@ class Image(models.Model):
     memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='images')
 
     # picture field
-    picture = models.ImageField(null=True, blank=True, upload_to='images/')
+    file = models.ImageField(null=True, blank=True, upload_to='images/')
 
     # user who uploaded the picture
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE)
@@ -109,7 +114,7 @@ class Image(models.Model):
     creation_time = models.DateTimeField(auto_now_add=True, blank=True)
 
     def __str__(self):
-        return self.description 
+        return self.file.name + " - " + self.description 
 
     def get_absolute_url(self):
         return reverse('memorial_detail', kwargs={'pk': self.memorial.pk})

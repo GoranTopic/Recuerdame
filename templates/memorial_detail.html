@@ -331,17 +331,16 @@
 						<div class="gallery" id="gallery">
 
 								{% for image in	memorial.images.all %}			
-								{% if image.picture %}
+								{% if image.file %}
 								<!-- Grid column -->
 								<div class="mb-3 pics animation all {% cycle '1' '2' %}">
-										<a href="{{ image.picture.url }}" data-toggle="lightbox" data-gallery="my-gallery">
-												<img class="img-fluid rounded shadow-sm" src="{{ image.picture.url }}" alt="Card image cap">
+										<a href="{{ image.file.url }}" data-toggle="lightbox" data-gallery="my-gallery">
+												<img class="img-fluid rounded shadow-sm" src="{{ image.file.url }}" alt="Card image cap">
 										</a>
 								</div>
 								<!-- Grid column -->
 								{% endif %}
 								{% endfor %}
-
 
 								{% for tribute in	memorial.tributes.all %}			
 								{% if tribute.cover_image %}
@@ -358,7 +357,7 @@
 						</div>
 						<!-- Grid row -->
 						<div class="text-center mb-3 mt-5 ">
-								<a href="#">
+								<a href="{% url 'image_upload' memorial.pk %}">
 										<img class="img-fluid" 
 												 style="heigh: 8rem; width: 8rem; opacity:.4"
 												 src="{% static 'img/add_card.jpg' %}">
@@ -423,4 +422,71 @@
 		</div>
 </div>
 {% endblock content %}
+
+{% block javascript %}
+
+    <script>
+        document.getElementById("informacionBtn").onclick = function() {
+            $("informacionBtn").addClass("bg-dark");
+            $("tributosBtn").removeClass("active");
+            $("galeriaBtn").removeClass("active");
+            $("relacionesBtn").removeClass("active");
+            $('#informacion').show(500)
+            $('#galeria').hide()
+            $('#relaciones').hide()
+            $('#tributos').hide()
+        };
+        document.getElementById("tributosBtn").onclick = function() {
+            $("tributosBtn").addClass("active");
+            $('#informacion').hide()
+            $('#galeria').hide()
+            $('#relaciones').hide()
+            $('#tributos').show(500)
+        };
+        document.getElementById("galeriaBtn").onclick = function() {
+            $("galeriaBtn").addClass("active");
+            $('#informacion').hide()
+            $('#galeria').show(500)
+            $('#relaciones').hide()
+            $('#tributos').hide()
+        };
+        document.getElementById("relacionesBtn").onclick = function() {
+            $("relacionesBtn").addClass("active");
+            $('#informacion').hide()
+            $('#galeria').hide()
+            $('#relaciones').show(500)
+            $('#tributos').hide()
+        };
+
+        // Get all buttons with class="btn" inside the container
+        var btns = document.getElementsByClassName("btn");
+
+        // Loop through the buttons and add the active class to the current/clicked button
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                var current = document.getElementsByClassName("active");
+
+                // If there's no active class
+                if (current.length > 0) {
+                    current[0].className = current[0].className.replace(" active", "");
+                }
+                // Add the active class to the current/clicked button
+                this.className += " active";
+            });
+        }
+
+				$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+						event.preventDefault();
+						$(this).ekkoLightbox();
+				});
+
+				$(this).ekkolightbox({
+		  		loadingMessage: "Loading…",
+		  		showArrows: true,
+		  		leftArrow: "<<<",
+		  		rightArrow: ">>>"
+				});
+
+    </script>
+		{% endblock javascript %}
 

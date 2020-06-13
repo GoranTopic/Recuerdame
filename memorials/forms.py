@@ -10,4 +10,4 @@ class LifeEventForm(forms.ModelForm):
 class ImageForm(forms.ModelForm):
     class Meta:
         model = Image
-        fields = ['picture', 'description', ]
+        fields = ['file', 'description', ]
