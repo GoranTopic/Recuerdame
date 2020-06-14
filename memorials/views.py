@@ -61,10 +61,8 @@ class MemorialCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView
     def form_valid(self, form):
         ''' Set the user wich send the request as the form 'creator' '''
         print("form is valid")
-
         form.instance.creado_por = self.request.user
         form.instance.manager = self.request.user
-
         return super().form_valid(form)
 
     def form_invalid(self, form):
@@ -75,9 +73,9 @@ class MemorialCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView
 
 class CreateRelationView(LoginRequiredMixin, CreateView):
     model = Relation
-    fields = ('related_name')
     login_url = 'login'
     template_name = 'relation_new.html'
+    fields = ('relation_name',)
 
     def post(self, request, memorial_pk):
         memorial = Memorial.objects.get(pk=memorial_pk)
@@ -88,15 +86,18 @@ class CreateRelationView(LoginRequiredMixin, CreateView):
             print("POST REQUEST was valied")
             form.instance.memorial = memorial 
             form.instance.user = request.user 
-            image = form.save()
-            data = {'is_valid': True, 'name' }
+            relation = form.save()
+            return HttpResponseRedirect(reverse('memorial_detail', kwargs={'pk': memorial_pk}))
         else:
             print("POST REQUEST not was valied")
-            image = form.save()
-            data = {'is_valid': False}
-        return JsonResponse(data)
+            relation = form.save()
+            form = RelationForm()
+            context['form'] = form
+            return render(request, 'image_new.html', context)
 
-
+        formset = LifeEventFormSet()
+        context['formset'] = formset
+        return render(request, 'image_new.html', context)
 @login_required(login_url='login')
 @require_http_methods(["GET", "POST"])
 def lifeEvenFormView(request, memorial_pk):
@@ -124,7 +125,7 @@ def lifeEvenFormView(request, memorial_pk):
             form.instance.picture = files['picture']
             # create instance of tribute model
             form.save()
-        context['formset'] = formset
+        context['form'] = formset
         return HttpResponseRedirect(reverse('memorial_detail', kwargs={'pk': memorial_pk}))
     else:
         #other request method such as GET

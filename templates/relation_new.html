@@ -1,0 +1,31 @@
+<!-- sign up html is used by sign up view which uses creatUserForm -->
+<!-- Memorial List -->
+{% extends 'app_base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+{% endblock title %}
+{% block content %}
+	
+<div class=" py-5 article-entry container text-center mb-5 column position-relative bg-light rounded shadow-lg" >
+
+		<h2>Tributo</h2>
+		<hr/>
+		<form enctype="multipart/form-data" method="POST">
+				{% csrf_token %}
+				{{ form|crispy }} 
+
+				<button class="mt-4 btn btn-primary ml-2" type="submit">
+						<i class="fas fa-check-circle fa-2x"></i>
+						Listo
+				</button>
+		</form>
+
+</div>
+
+{% endblock content %}
+
+
+
+
+

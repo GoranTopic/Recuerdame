@@ -10,6 +10,6 @@ urlpatterns = [
         # Upload images
         path('<int:memorial_pk>/images_upload', UploadImageView.as_view(), name='image_upload'),
         # relation 
-        path('<int:memorial_pk>/create_relation/', CreateRelationView.as_view(), name="Create_realtion"),
+        path('<int:memorial_pk>/create_relation/', CreateRelationView.as_view(), name="create_relation"),
         ]
 

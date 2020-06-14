@@ -14,4 +14,4 @@ class ImageForm(forms.ModelForm):
 class RelationForm(forms.ModelForm):
     class Meta:
         model = Relation
-        fields = ['related_name']
+        fields = ['relation_name']

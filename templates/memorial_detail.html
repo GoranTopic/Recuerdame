@@ -219,11 +219,15 @@
 																						<td><b>Creador:</b></td>
 																						<td><a href="#">{{ memorial.creado_por }}</a> </td>
 																				</tr>
+																				<tr>
+																						<td><b>Manager:</b></td>
+																						<td><a href="#">{{ memorial.manager }}</a> </td>
+																				</tr>
 																		</tbody>
 																</table>
 														</div>
 														<a class="btn btn-primary text-white"
-															 href="{% url 'memorial_update' memorial.pk %}"
+															 href="{% url 'create_relation' memorial.pk %}"
 															 type="button" >
 															 <i class="fas fa-link fa-2x"></i>
 															 Conosco a la persona
@@ -235,7 +239,7 @@
 															 Borrar
 														</a>
 														<a class="btn btn-info text-white"
-															 href="{% url 'relation_link' memorial.pk %}"
+															 href="{% url 'memorial_update' memorial.pk %}"
 															 type="button" >
 															 <i class="fas fa-user-edit fa-2x"></i>
 															 Cambiar

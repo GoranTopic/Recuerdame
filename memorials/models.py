@@ -91,7 +91,7 @@ class Relation(models.Model):
             ('Friend', 'Close-Friend'),
             ('Friend', 'Close-Friend'),
             ]
-
+    
     RELATIONS_ES = [ 
             ('Parent', 'Padre'), 
             ('Parent', 'Madre'),
@@ -112,9 +112,9 @@ class Relation(models.Model):
     # Memorial to which the relation is made to
     memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='related_memorial')
     # User to which the relation is made with
-    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE, realted_name='related_user')
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE, related_name='related_user')
     # Relation Name
-    relationship_name = models.CharField(max_lenght=100, choices=RELATIONS_ES)
+    relation_name = models.CharField(max_length=100, choices=RELATIONS_ES)
 
 class LifeEvent(models.Model):
     # memorial to which the picture is related to 
