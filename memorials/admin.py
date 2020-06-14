@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Memorial, Image
+from .models import Memorial, Image, Relation
 from eulogies.models import Eulogy
 from tributes.models import Tribute
 
@@ -16,3 +16,4 @@ class adminMemorial(admin.ModelAdmin):
 
 admin.site.register(Memorial, adminMemorial)
 admin.site.register(Image)
+admin.site.register(Relation)

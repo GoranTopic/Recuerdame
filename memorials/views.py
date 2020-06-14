@@ -79,11 +79,8 @@ class CreateRelationView(LoginRequiredMixin, CreateView):
 
     def post(self, request, memorial_pk):
         memorial = Memorial.objects.get(pk=memorial_pk)
-        print("GOT POST REQUEST")
-        print(request.POST)
         form = RelationForm(self.request.POST, self.request.FILES)
         if form.is_valid():
-            print("POST REQUEST was valied")
             form.instance.memorial = memorial 
             form.instance.user = request.user 
             relation = form.save()
@@ -98,6 +95,9 @@ class CreateRelationView(LoginRequiredMixin, CreateView):
         formset = LifeEventFormSet()
         context['formset'] = formset
         return render(request, 'image_new.html', context)
+
+
+
 @login_required(login_url='login')
 @require_http_methods(["GET", "POST"])
 def lifeEvenFormView(request, memorial_pk):

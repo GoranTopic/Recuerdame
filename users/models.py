@@ -8,7 +8,10 @@ class CustomUser(AbstractUser):
     # country of user
     country = CountryField(multiple=True, blank=True)   
     # user Picture 
-    imagen_image = ResizedImageField(null=True, blank=True, size=[500, 500], quality=100, crop=['middle', 'center'], upload_to='users/profile')
+    profile_image = ResizedImageField(null=True, blank=True, default='defaults/profile.jpg',
+            size=[500, 500], quality=100, crop=['middle', 'center'], upload_to='users/profile')
     # Bio
+    bio = models.TextField(null=True, blank=True)
+
 
 

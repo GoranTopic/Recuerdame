@@ -93,20 +93,20 @@ class Relation(models.Model):
             ]
     
     RELATIONS_ES = [ 
-            ('Parent', 'Padre'), 
-            ('Parent', 'Madre'),
-            ('Grandparent', 'Abuelo'), 
-            ('Grandparent', 'Abuela'),
-            ('Sibling', 'Hermano'),
-            ('Sibling', 'Hermana'),
-            ('Cousin', 'Primo'),
-            ('Cousin', 'Prima'), 
-            ('Significant_other', 'Novio'), 
-            ('Significant_other', 'Novia'), 
-            ('Spouse', 'Esposo'),
-            ('Spouse', 'Esposa'), 
-            ('Friend', 'Amigo'), 
-            ('Friend', 'Amigo Cercano'), 
+            ('Padre', 'Padre'), 
+            ('Madre', 'Madre'),
+            ('Abuelo', 'Abuelo'), 
+            ('Abuela', 'Abuela'),
+            ('Hermano', 'Hermano'),
+            ('Hermana', 'Hermana'),
+            ('Primo', 'Primo'),
+            ('Prima', 'Prima'), 
+            ('Novio', 'Novio'), 
+            ('Novia', 'Novia'), 
+            ('Esposo', 'Esposo'),
+            ('Esposa', 'Esposa'), 
+            ('Amigo', 'Amigo'), 
+            ('Amigo Cercano', 'Amigo Cercano'), 
             ]
 
     # Memorial to which the relation is made to
@@ -115,6 +115,9 @@ class Relation(models.Model):
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE, related_name='related_user')
     # Relation Name
     relation_name = models.CharField(max_length=100, choices=RELATIONS_ES)
+    def __str__(self):
+        return str(self.user) + "-- " + str(self.relation_name) + " --" + str(self.memorial)
+
 
 class LifeEvent(models.Model):
     # memorial to which the picture is related to 
