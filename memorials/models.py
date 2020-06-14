@@ -46,7 +46,7 @@ class Memorial(models.Model):
 
     class Meta:
         permissions = (
-                ('can add tribute' , 'can_add_tribute')
+                ('can add tribute' , 'can_add_tribute'),
                 ('can_add_content', 'can add content'),
                 ('can_view_content', 'can view content'),
                 )
@@ -69,8 +69,54 @@ class Memorial(models.Model):
         return reverse('memorial_detail', args=[str(self.id)])
 
 
-class LifeEvent(models.Model):
+class Relation(models.Model):
+    RELATIONS_EN = [ 
+            ('Parent', 'Parent'),
+            ('Parent', 'Father'),
+            ('Parent', 'Mother'),
+            ('Grandparent', 'Grandparent'),
+            ('Grandparent', 'Grandfather'),
+            ('Grandparent', 'Grandmother'),
+            ('Sibling', 'Sibling'),
+            ('Sibling', 'Sister'),
+            ('Sibling', 'Brother'),
+            ('Cousin', 'Cousin'),
+            ('Significant_other', 'Significant_other'),
+            ('Significant_other', 'Boyfriend'),
+            ('Significant_other', 'Girlfriend'),
+            ('Spouse', 'Spouse'),
+            ('Spouse', 'Husband'),
+            ('Spouse', 'Wife'),
+            ('Friend', 'Friend'),
+            ('Friend', 'Close-Friend'),
+            ('Friend', 'Close-Friend'),
+            ]
 
+    RELATIONS_ES = [ 
+            ('Parent', 'Padre'), 
+            ('Parent', 'Madre'),
+            ('Grandparent', 'Abuelo'), 
+            ('Grandparent', 'Abuela'),
+            ('Sibling', 'Hermano'),
+            ('Sibling', 'Hermana'),
+            ('Cousin', 'Primo'),
+            ('Cousin', 'Prima'), 
+            ('Significant_other', 'Novio'), 
+            ('Significant_other', 'Novia'), 
+            ('Spouse', 'Esposo'),
+            ('Spouse', 'Esposa'), 
+            ('Friend', 'Amigo'), 
+            ('Friend', 'Amigo Cercano'), 
+            ]
+
+    # Memorial to which the relation is made to
+    memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='related_memorial')
+    # User to which the relation is made with
+    user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE, realted_name='related_user')
+    # Relation Name
+    relationship_name = models.CharField(max_lenght=100, choices=RELATIONS_ES)
+
+class LifeEvent(models.Model):
     # memorial to which the picture is related to 
     memorial = models.ForeignKey(Memorial, on_delete=models.CASCADE, related_name='life_events')
 

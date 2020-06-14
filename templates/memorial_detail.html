@@ -100,16 +100,16 @@
         <div class="row btn-group btn-group-lg 
 				col-xl-6 col-md-8 col-10 offset-1 offset-xl-3 offset-md-2 " role="group">
 						<a class="col-3 btn btn-light" id="informacionBtn"><i class="fas fa-book fa-2x"></i>
-								<p>Informacion</p>
+								<p class="d-none d-md-block">Informacion</p>
 						</a>
 						<a class="col-2 btn btn-light" id="tributosBtn"><i class="fas fa-monument fa-2x"></i>
-								<p>Tributos</p>
+								<p class="d-none d-md-block">Tributos</p>
 						</a>
 						<a class="col-2 btn btn-light" id="galeriaBtn"><i class="fas fa-images fa-2x"></i>
-								<p>Galeria</p>
+								<p class="d-none d-md-block">Galeria</p>
 						</a>
 						<a class="col-2 btn btn-light" id="relacionesBtn"><i class="fas fa-users fa-2x"></i>
-								<p>Relaciones</p>
+								<p class="d-none d-md-block">Relaciones</p>
 						</a>
 				</div>
     </div>
@@ -205,23 +205,42 @@
 						<div class="my-5 container col-11">
 								<h1>Opciones</h1>
 								<hr/>
+
 								<div class="row">
 										<div class="col-12 m-3 col-xl-1">
 												<i class="fas offset-1 fa-cogs fa-5x"></i>
 										</div>
-										<div class="col-6 column text-center">
-												<a class="btn btn-danger text-white"
-													 href="{% url 'memorial_delete' memorial.pk %}"
-													 type="button" >
-													 <i class="fas fa-eraser fa-2x"></i>
-													 Borrar
-												</a>
-												<a class="btn btn-info text-white"
-													 href="{% url 'memorial_update' memorial.pk %}"
-													 type="button" >
-													 <i class="fas fa-user-edit fa-2x"></i>
-													 Cambiar
-												</a>
+										<div class="container d-flex  " >
+												<div class="col-6 column text-center">
+														<div class="col-10 column">
+																<table class=" table table-hover bg-light ">
+																		<tbody class="ml-5 ">
+																				<tr>
+																						<td><b>Creador:</b></td>
+																						<td><a href="#">{{ memorial.creado_por }}</a> </td>
+																				</tr>
+																		</tbody>
+																</table>
+														</div>
+														<a class="btn btn-primary text-white"
+															 href="{% url 'memorial_update' memorial.pk %}"
+															 type="button" >
+															 <i class="fas fa-link fa-2x"></i>
+															 Conosco a la persona
+														</a>
+														<a class="btn btn-danger text-white"
+															 href="{% url 'memorial_delete' memorial.pk %}"
+															 type="button" >
+															 <i class="fas fa-eraser fa-2x"></i>
+															 Borrar
+														</a>
+														<a class="btn btn-info text-white"
+															 href="{% url 'relation_link' memorial.pk %}"
+															 type="button" >
+															 <i class="fas fa-user-edit fa-2x"></i>
+															 Cambiar
+														</a>
+												</div >
 										</div>
 								</div>
 						</div>

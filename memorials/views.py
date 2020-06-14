@@ -1,8 +1,9 @@
 from django.shortcuts import render
 from django.forms import formset_factory
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin, PermissionRequiredMixin
 from django.contrib.auth import get_user_model 
 from django.contrib.auth.models import Group, Permission
+from django.contrib.auth.decorators import login_required
 from django.contrib.contenttypes.models import ContentType
 from django.views import View
 from django.views.generic import ListView, DetailView
@@ -11,9 +12,8 @@ from django.urls import reverse_lazy, reverse
 from django.http import JsonResponse
 from django.http import HttpResponseRedirect
 from django.views.decorators.http import require_http_methods
-from django.contrib.auth.decorators import login_required
-from .models import Memorial, Image, LifeEvent
-from .forms import ImageForm
+from .models import Memorial, Image, LifeEvent, Relation
+from .forms import ImageForm, RelationForm
 # Create your views here.
 
 # requiered field attibutes
@@ -51,15 +51,12 @@ class MemorialDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         obj = self.get_object()
         return obj.creado_por == self.request.user
 
-class MemorialCreateView(LoginRequiredMixin, CreateView):
+class MemorialCreateView(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     model = Memorial
     template_name = 'memorial_new.html'
     fields = FIELDS
     login_url = 'login'
     print("GOT REQUEST")
-    permission = Permission.objects.create(codename='can_publish', 
-            name='Can Publish Posts', 
-            content_type=Memorial)
 
     def form_valid(self, form):
         ''' Set the user wich send the request as the form 'creator' '''
@@ -75,6 +72,29 @@ class MemorialCreateView(LoginRequiredMixin, CreateView):
         form.instance.creado_por = self.request.user
         form.instance.manager = self.request.user
         return super().form_valid(form)
+
+class CreateRelationView(LoginRequiredMixin, CreateView):
+    model = Relation
+    fields = ('related_name')
+    login_url = 'login'
+    template_name = 'relation_new.html'
+
+    def post(self, request, memorial_pk):
+        memorial = Memorial.objects.get(pk=memorial_pk)
+        print("GOT POST REQUEST")
+        print(request.POST)
+        form = RelationForm(self.request.POST, self.request.FILES)
+        if form.is_valid():
+            print("POST REQUEST was valied")
+            form.instance.memorial = memorial 
+            form.instance.user = request.user 
+            image = form.save()
+            data = {'is_valid': True, 'name' }
+        else:
+            print("POST REQUEST not was valied")
+            image = form.save()
+            data = {'is_valid': False}
+        return JsonResponse(data)
 
 
 @login_required(login_url='login')
@@ -111,8 +131,6 @@ def lifeEvenFormView(request, memorial_pk):
         formset = LifeEventFormSet()
         context['formset'] = formset
         return render(request, 'image_new.html', context)
-
-
 
 class UploadImageView(View):
     def get(self, request, memorial_pk):
