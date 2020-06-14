@@ -78,6 +78,11 @@ class CreateRelationView(LoginRequiredMixin, CreateView):
     fields = ('relation_name',)
 
     def post(self, request, memorial_pk):
+        permission = Permission.objects.get(name='Can add image')
+        print(permission)
+
+        request.user.user_permissions.add(permission)
+
         memorial = Memorial.objects.get(pk=memorial_pk)
         form = RelationForm(self.request.POST, self.request.FILES)
         if form.is_valid():

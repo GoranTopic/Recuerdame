@@ -115,8 +115,10 @@ class Relation(models.Model):
     user = models.ForeignKey(get_user_model(), null=True, on_delete=models.CASCADE, related_name='related_user')
     # Relation Name
     relation_name = models.CharField(max_length=100, choices=RELATIONS_ES)
+
     def __str__(self):
         return str(self.user) + "-- " + str(self.relation_name) + " --" + str(self.memorial)
+
 
 
 class LifeEvent(models.Model):
